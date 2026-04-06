@@ -42,13 +42,13 @@ export default function Nosotros() {
       {/* Section 2: History & Founder */}
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-5 md:px-12">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
-            {/* Image first on mobile for visual impact */}
+          <div className="grid lg:grid-cols-3 gap-8 md:gap-12 items-start">
+            {/* Image - narrower newspaper column style on desktop */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-[4/3] md:aspect-[4/5] rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl group order-1 lg:order-2"
+              className="relative aspect-[4/3] md:aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl group order-1 lg:order-1 lg:col-span-1"
             >
               <Image 
                 src="/images/rpm-shop-team.jpeg" 
@@ -67,7 +67,7 @@ export default function Nosotros() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-4 md:space-y-6 text-slate-600 leading-relaxed text-base md:text-lg order-2 lg:order-1"
+              className="space-y-4 md:space-y-6 text-slate-600 leading-relaxed text-base md:text-lg order-2 lg:order-2 lg:col-span-2"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900 font-arimo mb-2 md:mb-4">{t.about.legacy.title}</h2>
               <p>
