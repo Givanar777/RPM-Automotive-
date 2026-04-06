@@ -12,16 +12,19 @@ export default function Services() {
     {
       icon: Wrench,
       title: t.services.general.title,
+      description: t.services.general.description,
       items: t.services.general.items,
     },
     {
       icon: Monitor,
       title: t.services.diagnostics.title,
+      description: t.services.diagnostics.description,
       items: t.services.diagnostics.items,
     },
     {
       icon: Calendar,
       title: t.services.maintenance.title,
+      description: t.services.maintenance.description,
       items: t.services.maintenance.items,
     },
   ];
@@ -46,6 +49,7 @@ export default function Services() {
             <div className="mb-6">
               <service.icon className="w-10 h-10 text-[#0059bb] mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-2xl font-bold">{service.title}</h3>
+              <p className="text-sm text-[#0070ea] font-medium mt-1">{service.description}</p>
             </div>
             <ul className="space-y-4 text-slate-600">
               {service.items.map((item, i) => (

@@ -61,10 +61,12 @@ export default function Testimonials() {
             </p>
             
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-slate-200"></div>
+              <div className="w-10 h-10 rounded-full bg-[#0059bb] flex items-center justify-center text-white font-bold text-lg">
+                {testimonial.author.charAt(0)}
+              </div>
               <div>
                 <div className="font-bold not-italic">{testimonial.author}</div>
-                <div className="text-xs text-slate-400 uppercase tracking-tighter">{testimonial.vehicle}</div>
+                <div className="text-xs text-slate-500 not-italic">{testimonial.vehicle}</div>
               </div>
             </div>
           </motion.div>
