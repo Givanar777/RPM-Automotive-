@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Award, Shield, Gauge, Handshake, SearchCheck, MessageSquare, Star } from 'lucide-react';
+import { Shield, Gauge, Handshake, MessageSquare, Star } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -9,11 +9,6 @@ export default function Trust() {
   const { t } = useLanguage();
 
   const benefits = [
-    {
-      icon: Award,
-      title: t.trust.benefits[0].title,
-      description: t.trust.benefits[0].description,
-    },
     {
       icon: Shield,
       title: t.trust.benefits[1].title,
@@ -28,11 +23,6 @@ export default function Trust() {
       icon: Handshake,
       title: t.trust.benefits[3].title,
       description: t.trust.benefits[3].description,
-    },
-    {
-      icon: SearchCheck,
-      title: t.trust.benefits[4].title,
-      description: t.trust.benefits[4].description,
     },
     {
       icon: MessageSquare,
