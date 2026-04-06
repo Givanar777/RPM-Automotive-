@@ -34,7 +34,7 @@ export default function Trust() {
   return (
     <section className="bg-[#f0eded] py-12 md:py-24">
       <div className="max-w-7xl mx-auto px-5 md:px-12">
-        <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
+        <div className="grid lg:grid-cols-12 gap-4 md:gap-8">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
