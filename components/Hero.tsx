@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -40,7 +39,7 @@ export default function Hero() {
             {t.hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-            <Link href="/contacto" className="w-full sm:w-auto">
+            <a href="sms:8314292096" className="w-full sm:w-auto">
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -48,8 +47,8 @@ export default function Hero() {
               >
                 {t.hero.ctaRequest}
               </motion.button>
-            </Link>
-            <Link href="/#servicios" className="w-full sm:w-auto">
+            </a>
+            <a href="tel:8314292096" className="w-full sm:w-auto">
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -57,7 +56,7 @@ export default function Hero() {
               >
                 {t.hero.ctaServices}
               </motion.button>
-            </Link>
+            </a>
           </div>
         </motion.div>
       </div>

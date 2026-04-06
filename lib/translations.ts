@@ -14,8 +14,8 @@ export const translations = {
       title: 'Your Neighborhood Auto Experts in ',
       location: 'Milpitas, CA',
       subtitle: 'Family-owned for 25+ years. ASE-certified mechanics who treat your car like their own - backed by our industry-leading 12-month warranty.',
-      ctaRequest: 'Get FREE Diagnostic',
-      ctaServices: 'View Services',
+      ctaRequest: 'Text Us',
+      ctaServices: 'Call Now',
     },
     stats: {
       experience: '25+ Years',
@@ -239,8 +239,8 @@ export const translations = {
       title: 'Tu Taller de Confianza en ',
       location: 'Milpitas, CA',
       subtitle: 'Negocio familiar por más de 25 años. Mecánicos certificados ASE que tratan tu auto como el suyo - respaldado por nuestra garantía de 12 meses.',
-      ctaRequest: 'Diagnóstico GRATIS',
-      ctaServices: 'Ver Servicios',
+      ctaRequest: 'Enviar Mensaje',
+      ctaServices: 'Llamar Ahora',
     },
     stats: {
       experience: '25+ Años',
