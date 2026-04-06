@@ -28,15 +28,15 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contacto" className="py-24 bg-slate-900 text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16">
+    <section id="contacto" className="py-12 md:py-24 bg-slate-900 text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 md:px-12 grid lg:grid-cols-2 gap-8 md:gap-16">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold mb-4 font-arimo">{t.contact.title}</h2>
-          <p className="text-slate-400 mb-10">
+          <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 font-arimo">{t.contact.title}</h2>
+          <p className="text-slate-400 mb-6 md:mb-10 text-sm md:text-base">
             {t.contact.subtitle}
           </p>
           
@@ -51,58 +51,58 @@ export default function ContactForm() {
               <p className="text-slate-300">{t.contact.form.successMsg}</p>
             </motion.div>
           ) : (
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-6">
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.name}</label>
+                  <label className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2 text-slate-300">{t.contact.form.name}</label>
                   <input 
                     name="name"
                     required
-                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
+                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white text-base focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
                     placeholder={t.contact.form.namePlaceholder} 
                     type="text"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.phone}</label>
+                  <label className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2 text-slate-300">{t.contact.form.phone}</label>
                   <input 
                     name="phone"
                     required
-                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
+                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white text-base focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
                     placeholder={t.contact.form.phonePlaceholder} 
                     type="tel"
                   />
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.email}</label>
+                  <label className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2 text-slate-300">{t.contact.form.email}</label>
                   <input 
                     name="email"
                     required
-                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
+                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white text-base focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
                     placeholder={t.contact.form.emailPlaceholder} 
                     type="email"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.vehicle}</label>
+                  <label className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2 text-slate-300">{t.contact.form.vehicle}</label>
                   <input 
                     name="vehicle"
                     required
-                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
+                    className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white text-base focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
                     placeholder={t.contact.form.vehiclePlaceholder} 
                     type="text"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.serviceType}</label>
+                <label className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2 text-slate-300">{t.contact.form.serviceType}</label>
                 <select 
                   name="serviceType"
                   required
                   defaultValue=""
-                  className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all appearance-none"
+                  className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white text-base focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all appearance-none"
                 >
                   <option value="" disabled>{language === 'es' ? 'Seleccione un servicio' : 'Select a service'}</option>
                   {t.contact.form.services.map((service) => (
@@ -111,11 +111,11 @@ export default function ContactForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-slate-300">{t.contact.form.problem}</label>
+                <label className="block text-xs md:text-sm font-medium mb-1.5 md:mb-2 text-slate-300">{t.contact.form.problem}</label>
                 <textarea 
                   name="message"
                   required
-                  className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
+                  className="w-full bg-slate-800 border-slate-700 rounded-lg p-3 text-white text-base focus:ring-[#0070ea] focus:border-[#0070ea] outline-none transition-all" 
                   placeholder={t.contact.form.problemPlaceholder} 
                   rows={4}
                 ></textarea>
@@ -124,7 +124,7 @@ export default function ContactForm() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
-                className="w-full bg-[#0070ea] py-4 rounded-lg font-bold text-lg hover:brightness-110 transition-all uppercase tracking-widest flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-[#0070ea] py-3.5 md:py-4 rounded-lg font-bold text-base md:text-lg hover:brightness-110 transition-all uppercase tracking-wider md:tracking-widest flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isSubmitting ? (language === 'es' ? 'Enviando...' : 'Sending...') : (
                   <>
@@ -141,32 +141,32 @@ export default function ContactForm() {
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
-          <div className="bg-slate-800 p-8 rounded-xl border border-slate-700">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <MapPin className="w-6 h-6 text-[#0070ea]" />
+          <div className="bg-slate-800 p-5 md:p-8 rounded-xl border border-slate-700">
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 flex items-center gap-2">
+              <MapPin className="w-5 h-5 md:w-6 md:h-6 text-[#0070ea]" />
               {language === 'es' ? 'Visita Nuestro Taller' : 'Visit Our Shop'}
             </h3>
-            <p className="text-slate-300 mb-4">123 Mechanic Way,<br />Milpitas, CA 95035</p>
-            <p className="text-[#0070ea] font-bold mb-8">{t.contact.info.phone}</p>
-            <div className="space-y-3 mt-8 border-t border-slate-700 pt-6">
-              <div className="flex justify-between text-sm">
+            <p className="text-slate-300 mb-3 md:mb-4 text-sm md:text-base">123 Mechanic Way,<br />Milpitas, CA 95035</p>
+            <p className="text-[#0070ea] font-bold mb-4 md:mb-8 text-sm md:text-base">{t.contact.info.phone}</p>
+            <div className="space-y-2 md:space-y-3 mt-4 md:mt-8 border-t border-slate-700 pt-4 md:pt-6">
+              <div className="flex justify-between text-xs md:text-sm">
                 <span className="text-slate-400">{language === 'es' ? 'Lunes - Viernes' : 'Monday - Friday'}</span>
                 <span>8:00 AM - 5:00 PM</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-xs md:text-sm">
                 <span className="text-slate-400">{language === 'es' ? 'Sábado' : 'Saturday'}</span>
                 <span>9:00 AM - 2:00 PM</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-xs md:text-sm">
                 <span className="text-slate-400">{language === 'es' ? 'Domingo' : 'Sunday'}</span>
                 <span className="text-[#0070ea]">{language === 'es' ? 'Cerrado' : 'Closed'}</span>
               </div>
             </div>
           </div>
           
-          <div className="h-64 bg-slate-800 rounded-xl overflow-hidden relative border border-slate-700">
+          <div className="h-48 md:h-64 bg-slate-800 rounded-xl overflow-hidden relative border border-slate-700">
             <Image 
               alt="Mapa de Milpitas" 
               className="w-full h-full object-cover opacity-50 grayscale contrast-125" 
@@ -179,7 +179,7 @@ export default function ContactForm() {
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}
               >
-                <MapPin className="w-12 h-12 text-[#0070ea] fill-current" />
+                <MapPin className="w-10 h-10 md:w-12 md:h-12 text-[#0070ea] fill-current" />
               </motion.div>
             </div>
           </div>
