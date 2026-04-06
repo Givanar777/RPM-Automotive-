@@ -17,6 +17,20 @@ export default function ContactForm() {
     setIsSubmitting(true);
     
     const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const phone = formData.get('phone') as string;
+    const email = formData.get('email') as string;
+    const vehicle = formData.get('vehicle') as string;
+    const serviceType = formData.get('serviceType') as string;
+    const message = formData.get('message') as string;
+    
+    // Create SMS message with form data
+    const smsMessage = `Request from ${name}%0APhone: ${phone}%0AEmail: ${email}%0AVehicle: ${vehicle}%0AService: ${serviceType}%0AMessage: ${message}`;
+    
+    // Open SMS with pre-filled message
+    window.location.href = `sms:8314292096?body=${smsMessage}`;
+    
+    // Also submit to backend
     const result = await submitQuote(formData);
     
     if (result.success) {
