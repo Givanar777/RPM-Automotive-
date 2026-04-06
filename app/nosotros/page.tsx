@@ -42,13 +42,13 @@ export default function Nosotros() {
       {/* Section 2: History & Founder */}
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-5 md:px-12">
-          <div className="grid lg:grid-cols-3 gap-8 md:gap-12 items-start">
-            {/* Image - narrower newspaper column style on desktop */}
+          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-start">
+            {/* Image - small newspaper column style on desktop */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-[4/3] md:aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl group order-1 lg:order-1 lg:col-span-1"
+              className="relative aspect-[4/3] md:aspect-square rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-lg group w-full lg:w-48 xl:w-56 shrink-0"
             >
               <Image 
                 src="/images/rpm-shop-team.jpeg" 
@@ -57,9 +57,9 @@ export default function Nosotros() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-              <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 text-white">
-                <p className="text-lg md:text-2xl font-bold font-arimo">RPM Auto Repair</p>
-                <p className="text-slate-200 uppercase tracking-widest text-xs md:text-sm">{t.about.legacy.founderRole}</p>
+              <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 text-white">
+                <p className="text-sm md:text-base font-bold font-arimo">RPM Auto Repair</p>
+                <p className="text-slate-200 uppercase tracking-widest text-[10px] md:text-xs">{t.about.legacy.founderRole}</p>
               </div>
             </motion.div>
 
@@ -67,7 +67,7 @@ export default function Nosotros() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-4 md:space-y-6 text-slate-600 leading-relaxed text-base md:text-lg order-2 lg:order-2 lg:col-span-2"
+              className="space-y-4 md:space-y-6 text-slate-600 leading-relaxed text-base md:text-lg flex-1"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900 font-arimo mb-2 md:mb-4">{t.about.legacy.title}</h2>
               <p>
