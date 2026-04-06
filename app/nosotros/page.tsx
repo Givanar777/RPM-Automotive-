@@ -71,15 +71,14 @@ export default function Nosotros() {
               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl group"
             >
               <Image 
-                src="https://picsum.photos/seed/rpm-founder-jose/800/1000" 
-                alt="José Trinidad Ríos - Founder of RPM Auto Repair"
+                src="/images/rpm-shop-team.jpeg" 
+                alt="RPM Auto Repair - Professional mechanic in our fully-equipped Milpitas shop"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
               <div className="absolute bottom-8 left-8 text-white">
-                <p className="text-2xl font-bold font-arimo">José Trinidad Ríos</p>
+                <p className="text-2xl font-bold font-arimo">RPM Auto Repair</p>
                 <p className="text-slate-200 uppercase tracking-widest text-sm">{t.about.legacy.founderRole}</p>
               </div>
             </motion.div>
