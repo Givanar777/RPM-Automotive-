@@ -114,7 +114,7 @@ export const translations = {
       viewMore: 'View more on',
     },
     contact: {
-      title: 'Get Your FREE Diagnostic Today',
+      title: 'Get Your Diagnostic Today',
       subtitle: "Tell us what your car needs and we'll call you back within 2 hours during business hours.",
       form: {
         name: 'Full Name',
@@ -339,7 +339,7 @@ export const translations = {
       viewMore: 'Ver más en',
     },
     contact: {
-      title: 'Obtén tu Diagnóstico GRATIS Hoy',
+      title: 'Obtén tu Diagnóstico Hoy',
       subtitle: 'Cuéntanos qué necesita tu auto y te llamamos en menos de 2 horas durante horario de atención.',
       form: {
         name: 'Nombre Completo',
