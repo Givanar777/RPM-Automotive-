@@ -13,14 +13,14 @@ export const translations = {
       badge: 'Trusted Since 1999',
       title: 'Your Neighborhood Auto Experts in ',
       location: 'Milpitas, CA',
-      subtitle: 'Family-owned for 25+ years. ASE-certified mechanics who treat your car like their own - backed by our industry-leading 24-month warranty.',
+      subtitle: 'Family-owned for 25+ years. ASE-certified mechanics who treat your car like their own - backed by our industry-leading 12-month warranty.',
       ctaRequest: 'Get FREE Diagnostic',
       ctaServices: 'View Services',
     },
     stats: {
       experience: '25+ Years',
       experienceSub: 'Family-Owned',
-      warranty: '24-Month',
+      warranty: '12-Month',
       warrantySub: 'Parts & Labor',
       google: '5-Star Rated',
       googleSub: '200+ Reviews',
@@ -70,7 +70,7 @@ export const translations = {
           description: 'Our mechanics are master-level certified experts.',
         },
         {
-          title: '24-Month Warranty',
+          title: '12-Month Warranty',
           description: 'Confidence in every repair we perform.',
         },
         {
@@ -106,7 +106,7 @@ export const translations = {
           vehicle: "2020 BMW 330i",
         },
         {
-          quote: "Found my forever mechanic! Jose and his team have serviced 3 of our family cars now. The 24-month warranty gave us peace of mind when buying my daughter her first used car.",
+          quote: "Found my forever mechanic! Jose and his team have serviced 3 of our family cars now. The 12-month warranty gave us peace of mind when buying my daughter her first used car.",
           author: "Linda R.",
           vehicle: "2018 Honda Civic",
         },
@@ -238,14 +238,14 @@ export const translations = {
       badge: 'Desde 1999',
       title: 'Tu Taller de Confianza en ',
       location: 'Milpitas, CA',
-      subtitle: 'Negocio familiar por más de 25 años. Mecánicos certificados ASE que tratan tu auto como el suyo - respaldado por nuestra garantía de 24 meses.',
+      subtitle: 'Negocio familiar por más de 25 años. Mecánicos certificados ASE que tratan tu auto como el suyo - respaldado por nuestra garantía de 12 meses.',
       ctaRequest: 'Diagnóstico GRATIS',
       ctaServices: 'Ver Servicios',
     },
     stats: {
       experience: '25+ Años',
       experienceSub: 'Negocio Familiar',
-      warranty: '24 Meses',
+      warranty: '12 Meses',
       warrantySub: 'Piezas y Mano de Obra',
       google: '5 Estrellas',
       googleSub: '200+ Reseñas',
@@ -295,7 +295,7 @@ export const translations = {
           description: 'Nuestros mecánicos son expertos certificados a nivel maestro.',
         },
         {
-          title: 'Garantía de 24 Meses',
+          title: 'Garantía de 12 Meses',
           description: 'Confianza en cada reparación que realizamos.',
         },
         {
@@ -331,7 +331,7 @@ export const translations = {
           vehicle: "BMW 330i 2020",
         },
         {
-          quote: "Encontré mi mecánico de por vida. José y su equipo han dado servicio a 3 de nuestros autos familiares. La garantía de 24 meses nos dio tranquilidad al comprar el primer auto usado de mi hija.",
+          quote: "Encontré mi mecánico de por vida. José y su equipo han dado servicio a 3 de nuestros autos familiares. La garantía de 12 meses nos dio tranquilidad al comprar el primer auto usado de mi hija.",
           author: "Linda R.",
           vehicle: "Honda Civic 2018",
         },
