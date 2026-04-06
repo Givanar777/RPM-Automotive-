@@ -195,7 +195,7 @@ export const translations = {
       },
       legacy: {
         title: 'The Legacy of José Trinidad Ríos',
-        p1: 'The history of RPM Auto Repair began in 1999, when José Trinidad Ríos decided to turn his passion for engines into a commitment to his community. With little more than his tools and an unwavering desire to offer fair service, José opened the doors of what is now a benchmark of trust in Milpitas.',
+        p1: 'The history of RPM Auto Repair began in 1999, when José Trinidad Ríos decided to turn his passion for engines into a commitment to his community. With little more than his tools and an unwavering desire to offer fair service, José opened the doors of what is now a benchmark of trust in Santa Cruz.',
         p2: 'Over more than two decades, we have seen automotive technology evolve, but our core values have remained intact. We don\'t just repair cars; we build relationships based on transparency.',
         quote: 'Our greatest satisfaction is not just fixing an engine, but seeing the peace of mind on our customers\' faces when they know their car is in good hands.',
         p3: 'It is that trust that makes us, today, have customers who travel from Salinas and other distant cities just for us to take care of their vehicles. They know that at RPM, our word is as good as the work performed.',
@@ -420,7 +420,7 @@ export const translations = {
       },
       legacy: {
         title: 'El Legado de José Trinidad Ríos',
-        p1: 'La historia de RPM Auto Repair comenzó en 1999, cuando José Trinidad Ríos decidió convertir su pasión por los motores en un compromiso con su comunidad. Con poco más que sus herramientas y un deseo inquebrantable de ofrecer un servicio justo, José abrió las puertas de lo que hoy es un referente de confianza en Milpitas.',
+        p1: 'La historia de RPM Auto Repair comenzó en 1999, cuando José Trinidad Ríos decidió convertir su pasión por los motores en un compromiso con su comunidad. Con poco más que sus herramientas y un deseo inquebrantable de ofrecer un servicio justo, José abrió las puertas de lo que hoy es un referente de confianza en Santa Cruz.',
         p2: 'A lo largo de más de dos décadas, hemos visto evolucionar la tecnología automotriz, pero nuestros valores fundamentales han permanecido intactos. No solo reparamos autos; construimos relaciones basadas en la transparencia.',
         quote: 'Nuestra mayor satisfacción no es solo arreglar un motor, sino ver la tranquilidad en el rostro de nuestros clientes cuando saben que su auto está en buenas manos.',
         p3: 'Es esa confianza la que hace que, hoy en día, tengamos clientes que viajan desde Salinas y otras ciudades lejanas solo para que nosotros nos encarguemos de sus vehículos. Saben que en RPM, la palabra vale tanto como el trabajo realizado.',
