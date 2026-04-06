@@ -63,7 +63,7 @@ export default function ServiciosPage() {
                 
                 <a 
                   href="tel:8314292096"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3.5 md:py-5 rounded-xl md:rounded-2xl font-black text-center transition-all flex items-center justify-center gap-2 md:gap-3 shadow-lg shadow-red-200 hover:shadow-red-300 tracking-tight text-sm md:text-base"
+                  className="w-full bg-[#008000] hover:bg-[#006600] text-white py-3.5 md:py-5 rounded-xl md:rounded-2xl font-black text-center transition-all flex items-center justify-center gap-2 md:gap-3 shadow-lg shadow-green-200 hover:shadow-green-300 tracking-tight text-sm md:text-base"
                 >
                   <Phone className="w-4 h-4 md:w-5 md:h-5 fill-current" />
                   {card.cta}
