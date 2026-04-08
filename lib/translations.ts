@@ -12,7 +12,7 @@ export const translations = {
     hero: {
       badge: 'Expert Automotive Care',
       title: 'Reliable Automotive Repair & Diagnostics in ',
-      location: 'Milpitas, CA',
+      location: 'Santa Cruz, CA',
       subtitle: 'Expert service you can trust. same-day diagnostics, and a 12-month warranty on parts and labor.',
       ctaRequest: 'Request Diagnostic',
       ctaServices: 'View Services',
