@@ -67,7 +67,7 @@ export const translations = {
           description: 'Our mechanics are master-level certified experts.',
         },
         {
-          title: '24-Month Warranty',
+          title: '12-Month Warranty',
           description: 'Confidence in every repair we perform.',
         },
         {
