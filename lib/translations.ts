@@ -20,11 +20,11 @@ export const translations = {
     stats: {
       experience: 'Over 24 Years',
       experienceSub: 'of Experience',
-      warranty: '24-Month',
+      warranty: '12-Month',
       warrantySub: 'Warranty',
       google: '5 Stars',
       googleSub: 'on Google',
-      diagnostic: 'FREE 30-Min',
+      diagnostic: '30-Min',
       diagnosticSub: 'Diagnostic',
     },
     services: {
