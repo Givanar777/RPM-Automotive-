@@ -13,7 +13,7 @@ export const translations = {
       badge: 'Expert Automotive Care',
       title: 'Reliable Automotive Repair & Diagnostics in ',
       location: 'Milpitas, CA',
-      subtitle: 'Expert service you can trust. ASE-certified mechanics, same-day diagnostics, and a 24-month warranty on parts and labor.',
+      subtitle: 'Expert service you can trust. same-day diagnostics, and a 12-month warranty on parts and labor.',
       ctaRequest: 'Request Diagnostic',
       ctaServices: 'View Services',
     },
