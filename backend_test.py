@@ -9,6 +9,8 @@ class RPMAutomotiveAPITester:
         self.tests_run = 0
         self.tests_passed = 0
         self.test_results = []
+        self.auth_token = None
+        self.admin_user = None
 
     def log_test(self, name, success, details=""):
         """Log test result"""
@@ -24,6 +26,267 @@ class RPMAutomotiveAPITester:
             "success": success,
             "details": details
         })
+
+    def get_auth_headers(self):
+        """Get headers with authentication"""
+        headers = {"Content-Type": "application/json"}
+        if self.auth_token:
+            headers["Authorization"] = f"Bearer {self.auth_token}"
+        return headers
+
+    def test_admin_login(self):
+        """Test admin login"""
+        login_data = {
+            "email": "admin@rpm.com",
+            "password": "admin123"
+        }
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/api/auth/login",
+                json=login_data,
+                headers={"Content-Type": "application/json"},
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                expected_keys = ["id", "email", "role", "token"]
+                has_keys = all(key in data for key in expected_keys)
+                success = has_keys and data.get("role") == "admin"
+                if success:
+                    self.auth_token = data.get("token")
+                    self.admin_user = data
+                    details = f"Status: {response.status_code}, Admin logged in: {data.get('email')}"
+                else:
+                    details = f"Missing keys or wrong role: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Admin Login", success, details)
+            return success
+            
+        except Exception as e:
+            self.log_test("Admin Login", False, f"Exception: {str(e)}")
+            return False
+
+    def test_dashboard_stats(self):
+        """Test GET /api/dashboard/stats endpoint"""
+        try:
+            response = requests.get(
+                f"{self.base_url}/api/dashboard/stats",
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                expected_keys = ["total_leads", "new_leads", "contacted", "converted", "total_clients", "total_services"]
+                has_keys = all(key in data for key in expected_keys)
+                success = has_keys and all(isinstance(data[key], int) for key in expected_keys)
+                details = f"Status: {response.status_code}, Stats: {data}" if success else f"Missing keys or wrong types: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Dashboard Stats", success, details)
+            return success
+            
+        except Exception as e:
+            self.log_test("Dashboard Stats", False, f"Exception: {str(e)}")
+            return False
+
+    def test_get_leads_with_auth(self):
+        """Test GET /api/leads endpoint with authentication"""
+        try:
+            response = requests.get(
+                f"{self.base_url}/api/leads",
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                expected_keys = ["leads", "total"]
+                has_keys = all(key in data for key in expected_keys)
+                success = has_keys and isinstance(data.get("leads"), list)
+                details = f"Status: {response.status_code}, Found {data.get('total', 0)} leads" if success else f"Missing keys or wrong format: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Get Leads (Auth)", success, details)
+            return success, data.get("leads", []) if success else []
+            
+        except Exception as e:
+            self.log_test("Get Leads (Auth)", False, f"Exception: {str(e)}")
+            return False, []
+
+    def test_convert_lead(self, lead_id):
+        """Test POST /api/leads/{id}/convert endpoint"""
+        if not lead_id:
+            self.log_test("Convert Lead", False, "No lead ID provided")
+            return False
+            
+        try:
+            response = requests.post(
+                f"{self.base_url}/api/leads/{lead_id}/convert",
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                success = data.get("success") is True
+                details = f"Status: {response.status_code}, Conversion successful" if success else f"Wrong response: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Convert Lead", success, details)
+            return success
+            
+        except Exception as e:
+            self.log_test("Convert Lead", False, f"Exception: {str(e)}")
+            return False
+
+    def test_get_clients(self):
+        """Test GET /api/clients endpoint"""
+        try:
+            response = requests.get(
+                f"{self.base_url}/api/clients",
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                expected_keys = ["clients"]
+                has_keys = all(key in data for key in expected_keys)
+                success = has_keys and isinstance(data.get("clients"), list)
+                details = f"Status: {response.status_code}, Found {len(data.get('clients', []))} clients" if success else f"Missing keys or wrong format: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Get Clients", success, details)
+            return success, data.get("clients", []) if success else []
+            
+        except Exception as e:
+            self.log_test("Get Clients", False, f"Exception: {str(e)}")
+            return False, []
+
+    def test_create_service_record(self, client_phone):
+        """Test POST /api/services endpoint"""
+        if not client_phone:
+            self.log_test("Create Service Record", False, "No client phone provided")
+            return False
+            
+        service_data = {
+            "client_phone": client_phone,
+            "vehicle": "2020 Toyota Camry",
+            "service_type": "Oil Change",
+            "description": "Regular oil change service",
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "cost": 45.99,
+            "technician": "Test Tech",
+            "status": "completed",
+            "notes": "Service completed successfully"
+        }
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/api/services",
+                json=service_data,
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                expected_keys = ["success", "record"]
+                has_keys = all(key in data for key in expected_keys)
+                success = has_keys and data.get("success") is True
+                details = f"Status: {response.status_code}, Service record created with ID: {data.get('record', {}).get('id', 'N/A')}" if success else f"Missing keys or wrong response: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Create Service Record", success, details)
+            return success
+            
+        except Exception as e:
+            self.log_test("Create Service Record", False, f"Exception: {str(e)}")
+            return False
+
+    def test_get_team(self):
+        """Test GET /api/team endpoint"""
+        try:
+            response = requests.get(
+                f"{self.base_url}/api/team",
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                expected_keys = ["members"]
+                has_keys = all(key in data for key in expected_keys)
+                success = has_keys and isinstance(data.get("members"), list)
+                details = f"Status: {response.status_code}, Found {len(data.get('members', []))} team members" if success else f"Missing keys or wrong format: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Get Team", success, details)
+            return success
+            
+        except Exception as e:
+            self.log_test("Get Team", False, f"Exception: {str(e)}")
+            return False
+
+    def test_create_team_member(self):
+        """Test POST /api/auth/register endpoint for team member creation"""
+        member_data = {
+            "email": f"test.member.{datetime.now().strftime('%H%M%S')}@rpm.com",
+            "password": "testpass123",
+            "name": "Test Member",
+            "role": "member"
+        }
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/api/auth/register",
+                json=member_data,
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
+            
+            success = response.status_code == 200
+            
+            if success:
+                data = response.json()
+                expected_keys = ["id", "email", "name", "role"]
+                has_keys = all(key in data for key in expected_keys)
+                success = has_keys and data.get("role") == "member"
+                details = f"Status: {response.status_code}, Team member created: {data.get('email')}" if success else f"Missing keys or wrong role: {data}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text}"
+            
+            self.log_test("Create Team Member", success, details)
+            return success
+            
+        except Exception as e:
+            self.log_test("Create Team Member", False, f"Exception: {str(e)}")
+            return False
 
     def test_health_endpoint(self):
         """Test /api/health endpoint"""
@@ -74,12 +337,14 @@ class RPMAutomotiveAPITester:
                 expected_keys = ["success", "lead"]
                 has_keys = all(key in data for key in expected_keys)
                 success = has_keys and data.get("success") is True
-                details = f"Status: {response.status_code}, Lead created with ID: {data.get('lead', {}).get('id', 'N/A')}" if success else f"Missing keys or wrong response: {data}"
+                lead_id = data.get('lead', {}).get('id') if success else None
+                details = f"Status: {response.status_code}, Lead created with ID: {lead_id}" if success else f"Missing keys or wrong response: {data}"
             else:
                 details = f"Status: {response.status_code}, Response: {response.text}"
+                lead_id = None
             
             self.log_test("Create Lead", success, details)
-            return success, test_lead["phone"] if success else None
+            return success, lead_id
             
         except Exception as e:
             self.log_test("Create Lead", False, f"Exception: {str(e)}")
@@ -107,10 +372,10 @@ class RPMAutomotiveAPITester:
             self.log_test("Get Leads", False, f"Exception: {str(e)}")
             return False
 
-    def test_update_lead(self, phone):
-        """Test PATCH /api/leads/{phone} endpoint"""
-        if not phone:
-            self.log_test("Update Lead", False, "No phone number provided")
+    def test_update_lead(self, lead_id):
+        """Test PATCH /api/leads/{lead_id} endpoint"""
+        if not lead_id:
+            self.log_test("Update Lead", False, "No lead ID provided")
             return False
             
         update_data = {
@@ -120,9 +385,9 @@ class RPMAutomotiveAPITester:
         
         try:
             response = requests.patch(
-                f"{self.base_url}/api/leads/{phone}",
+                f"{self.base_url}/api/leads/{lead_id}",
                 json=update_data,
-                headers={"Content-Type": "application/json"},
+                headers=self.get_auth_headers(),
                 timeout=10
             )
             
@@ -142,14 +407,18 @@ class RPMAutomotiveAPITester:
             self.log_test("Update Lead", False, f"Exception: {str(e)}")
             return False
 
-    def test_delete_lead(self, phone):
-        """Test DELETE /api/leads/{phone} endpoint"""
-        if not phone:
-            self.log_test("Delete Lead", False, "No phone number provided")
+    def test_delete_lead(self, lead_id):
+        """Test DELETE /api/leads/{lead_id} endpoint"""
+        if not lead_id:
+            self.log_test("Delete Lead", False, "No lead ID provided")
             return False
             
         try:
-            response = requests.delete(f"{self.base_url}/api/leads/{phone}", timeout=10)
+            response = requests.delete(
+                f"{self.base_url}/api/leads/{lead_id}",
+                headers=self.get_auth_headers(),
+                timeout=10
+            )
             success = response.status_code == 200
             
             if success:
@@ -168,24 +437,52 @@ class RPMAutomotiveAPITester:
 
     def run_all_tests(self):
         """Run all backend API tests"""
-        print("🚀 Starting RPM Automotive Backend API Tests")
+        print("🚀 Starting RPM Automotive Backend API Tests (Iteration 2)")
         print(f"Testing against: {self.base_url}")
         print("=" * 60)
         
         # Test health endpoint
         health_ok = self.test_health_endpoint()
         
-        # Test lead creation
-        create_ok, test_phone = self.test_create_lead()
+        # Test admin login
+        login_ok = self.test_admin_login()
+        if not login_ok:
+            print("❌ Admin login failed - skipping authenticated tests")
+            return False
         
-        # Test getting leads
-        get_ok = self.test_get_leads()
+        # Test dashboard stats
+        stats_ok = self.test_dashboard_stats()
+        
+        # Test lead creation (public endpoint)
+        create_ok, test_lead_id = self.test_create_lead()
+        
+        # Test getting leads with auth
+        get_auth_ok, leads = self.test_get_leads_with_auth()
+        
+        # Test lead conversion (if we have leads)
+        convert_ok = False
+        if leads and len(leads) > 0:
+            lead_id = leads[0].get("id")
+            convert_ok = self.test_convert_lead(lead_id)
+        
+        # Test getting clients
+        clients_ok, clients = self.test_get_clients()
+        
+        # Test service record creation (if we have clients)
+        service_ok = False
+        if clients and len(clients) > 0:
+            client_phone = clients[0].get("phone")
+            service_ok = self.test_create_service_record(client_phone)
+        
+        # Test team management
+        team_ok = self.test_get_team()
+        member_ok = self.test_create_team_member()
         
         # Test updating lead (if creation was successful)
-        update_ok = self.test_update_lead(test_phone) if test_phone else False
+        update_ok = self.test_update_lead(test_lead_id) if test_lead_id else False
         
         # Test deleting lead (if creation was successful)
-        delete_ok = self.test_delete_lead(test_phone) if test_phone else False
+        delete_ok = self.test_delete_lead(test_lead_id) if test_lead_id else False
         
         # Print summary
         print("\n" + "=" * 60)
