@@ -38,16 +38,19 @@ export default function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        <div className="flex justify-between items-center h-16 px-8 md:px-16 max-w-[1400px] mx-auto">
-          <Link href="/" data-testid="logo-link" className="flex items-center">
-            <Image
-              src={siteConfig.logo}
-              alt={siteConfig.name}
-              width={100}
-              height={32}
-              className="h-8 w-auto object-contain"
-              priority
-            />
+        <div className="flex justify-between items-center h-20 px-8 md:px-16 max-w-[1400px] mx-auto">
+          <Link href="/" data-testid="logo-link" className="group relative flex items-center overflow-hidden">
+            <div className="relative transition-transform duration-500 ease-out group-hover:translate-x-1">
+              <Image
+                src={siteConfig.logo}
+                alt={siteConfig.name}
+                width={160}
+                height={48}
+                className="h-12 md:h-14 w-auto object-contain transition-all duration-500 group-hover:brightness-125"
+                priority
+              />
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] pointer-events-none" />
+            </div>
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
