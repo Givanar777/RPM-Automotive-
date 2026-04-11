@@ -64,6 +64,14 @@ Ferrari.com-inspired ultra-minimal luxury editorial:
 - [x] Canonical URLs pointing to rpmautomotivesc.com domain
 - [x] Founder image added to About page from user-provided photo
 
+### Phase 6 - Password Reset (Apr 2026)
+- [x] Forgot password page (/admin/forgot-password) with email form
+- [x] Reset password page (/admin/reset-password?token=xxx) with new password form
+- [x] Real email delivery via Google Workspace SMTP (contact@rpmautomotivesc.com)
+- [x] HTML email template matching dark RPM brand
+- [x] Token expiration (1 hour), MongoDB TTL index
+- [x] Security: no email enumeration, password validation (min 6 chars), single-use tokens
+
 ## Key Files
 - `/app/frontend/public/logo.webp` - Logo file
 - `/app/frontend/lib/siteConfig.ts` - Business info, images, hours
@@ -96,7 +104,7 @@ Ferrari.com-inspired ultra-minimal luxury editorial:
 ### P1
 - Activate Twilio SMS (needs user's API credentials)
 - ~~SEO meta tags~~ DONE (Apr 2026)
-- Password reset flow
+- ~~Password reset flow~~ DONE (Apr 2026)
 
 ### P2
 - Email notifications (needs SMTP/Google Workspace)
