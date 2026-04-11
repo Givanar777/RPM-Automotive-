@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav data-testid="main-navbar" className="fixed top-0 w-full z-50 bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-800/60">
+      <nav data-testid="main-navbar" className="fixed top-0 w-full z-50 bg-zinc-950/40 backdrop-blur-xl border-b border-white/5">
         <div className="flex justify-between items-center h-14 px-6 md:px-12 max-w-7xl mx-auto">
           <Link href="/" data-testid="logo-link" className="flex items-center">
             <Image src={siteConfig.logo} alt={siteConfig.name} width={90} height={28} className="h-7 w-auto object-contain" priority />
