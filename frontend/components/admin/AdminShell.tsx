@@ -66,7 +66,10 @@ function LoginPage() {
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
-        <div className="text-center mt-6">
+        <div className="text-center mt-4">
+          <Link href="/admin/forgot-password" data-testid="forgot-password-link" className="text-zinc-500 text-xs hover:text-white transition-colors">Forgot your password?</Link>
+        </div>
+        <div className="text-center mt-3">
           <Link href="/" className="text-zinc-500 text-xs hover:text-white transition-colors">Back to website</Link>
         </div>
       </div>

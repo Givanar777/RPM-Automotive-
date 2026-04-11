@@ -24,6 +24,13 @@ TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
 TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER")
 NOTIFY_PHONE = os.environ.get("NOTIFY_PHONE", "8314292096")
 
+# SMTP config for password reset emails
+SMTP_EMAIL = os.environ.get("SMTP_EMAIL")
+SMTP_APP_PASSWORD = os.environ.get("SMTP_APP_PASSWORD")
+SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SITE_URL = os.environ.get("SITE_URL", "https://rpmautomotivesc.com")
+
 app = FastAPI(title="RPM Automotive API")
 
 app.add_middleware(
@@ -108,11 +115,84 @@ async def send_sms_notification(message: str):
     else:
         print(f"[SMS MOCK] Would send to {NOTIFY_PHONE}: {message}")
 
+# --- Email Helper ---
+async def send_reset_email(to_email: str, reset_token: str, user_name: str):
+    import aiosmtplib
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+
+    if not SMTP_EMAIL or not SMTP_APP_PASSWORD:
+        print(f"[EMAIL MOCK] Reset link for {to_email}: {SITE_URL}/admin/reset-password?token={reset_token}")
+        return False
+
+    reset_link = f"{SITE_URL}/admin/reset-password?token={reset_token}"
+
+    msg = MIMEMultipart("alternative")
+    msg["From"] = f"RPM Automotive <{SMTP_EMAIL}>"
+    msg["To"] = to_email
+    msg["Subject"] = "Reset Your Password - RPM Automotive"
+
+    text = f"""Hi {user_name},
+
+You requested a password reset for your RPM Automotive admin account.
+
+Click this link to reset your password:
+{reset_link}
+
+This link expires in 1 hour.
+
+If you didn't request this, you can safely ignore this email.
+
+- RPM Automotive Team
+(831) 429-2096
+"""
+
+    html = f"""
+<!DOCTYPE html>
+<html>
+<body style="margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;">
+  <div style="max-width:480px;margin:40px auto;background:#18181b;border-radius:12px;border:1px solid #27272a;overflow:hidden;">
+    <div style="padding:32px 32px 24px;border-bottom:1px solid #27272a;">
+      <h1 style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.01em;">RPM Automotive</h1>
+    </div>
+    <div style="padding:32px;">
+      <p style="margin:0 0 16px;color:#a1a1aa;font-size:14px;line-height:1.6;">Hi {user_name},</p>
+      <p style="margin:0 0 24px;color:#a1a1aa;font-size:14px;line-height:1.6;">You requested a password reset for your admin account. Click the button below to set a new password.</p>
+      <a href="{reset_link}" style="display:inline-block;background:#ffffff;color:#000000;padding:12px 28px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.02em;text-transform:uppercase;">Reset Password</a>
+      <p style="margin:24px 0 0;color:#52525b;font-size:12px;line-height:1.6;">This link expires in 1 hour. If you didn't request this, ignore this email.</p>
+    </div>
+    <div style="padding:20px 32px;border-top:1px solid #27272a;text-align:center;">
+      <p style="margin:0;color:#3f3f46;font-size:11px;">RPM Automotive &middot; 110 Stanford Ave, Santa Cruz CA 95062 &middot; (831) 429-2096</p>
+    </div>
+  </div>
+</body>
+</html>"""
+
+    msg.attach(MIMEText(text, "plain"))
+    msg.attach(MIMEText(html, "html"))
+
+    try:
+        await aiosmtplib.send(
+            msg,
+            hostname=SMTP_HOST,
+            port=SMTP_PORT,
+            start_tls=True,
+            username=SMTP_EMAIL,
+            password=SMTP_APP_PASSWORD,
+        )
+        print(f"Reset email sent to {to_email}")
+        return True
+    except Exception as e:
+        print(f"Email send failed: {e}")
+        return False
+
 # --- Startup ---
 @app.on_event("startup")
 async def startup():
     await db.users.create_index("email", unique=True)
     await db.login_attempts.create_index("identifier")
+    await db.password_resets.create_index("token")
+    await db.password_resets.create_index("expires_at", expireAfterSeconds=0)
     # Seed admin
     admin_email = os.environ.get("ADMIN_EMAIL", "admin@rpm.com")
     admin_password = os.environ.get("ADMIN_PASSWORD", "admin123")
@@ -186,6 +266,13 @@ class ServiceRecord(BaseModel):
 class TeamMemberUpdate(BaseModel):
     name: Optional[str] = None
     role: Optional[str] = None
+
+class ForgotPasswordRequest(BaseModel):
+    email: str
+
+class ResetPasswordRequest(BaseModel):
+    token: str
+    password: str
 
 # --- Health ---
 @app.get("/api/health")
@@ -287,6 +374,63 @@ async def refresh_token(request: Request, response: Response):
         raise HTTPException(status_code=401, detail="Refresh token expired")
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid refresh token")
+
+# --- Password Reset ---
+@app.post("/api/auth/forgot-password")
+async def forgot_password(req: ForgotPasswordRequest):
+    email = req.email.lower().strip()
+    user = await db.users.find_one({"email": email})
+    # Always return success to avoid email enumeration
+    if not user:
+        return {"success": True, "message": "If an account exists with that email, a reset link has been sent."}
+
+    # Generate reset token
+    reset_token = secrets.token_urlsafe(32)
+    await db.password_resets.delete_many({"email": email})
+    await db.password_resets.insert_one({
+        "email": email,
+        "token": reset_token,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "expires_at": (datetime.now(timezone.utc) + timedelta(hours=1)).isoformat(),
+    })
+
+    user_name = user.get("name", "User")
+    await send_reset_email(email, reset_token, user_name)
+    return {"success": True, "message": "If an account exists with that email, a reset link has been sent."}
+
+@app.post("/api/auth/reset-password")
+async def reset_password(req: ResetPasswordRequest):
+    record = await db.password_resets.find_one({"token": req.token})
+    if not record:
+        raise HTTPException(status_code=400, detail="Invalid or expired reset link.")
+    expires_at = record["expires_at"]
+    if isinstance(expires_at, str):
+        expires_at = datetime.fromisoformat(expires_at)
+    if datetime.now(timezone.utc) > expires_at:
+        await db.password_resets.delete_one({"token": req.token})
+        raise HTTPException(status_code=400, detail="Reset link has expired. Please request a new one.")
+    if len(req.password) < 6:
+        raise HTTPException(status_code=400, detail="Password must be at least 6 characters.")
+
+    await db.users.update_one(
+        {"email": record["email"]},
+        {"$set": {"password_hash": hash_password(req.password)}}
+    )
+    await db.password_resets.delete_many({"email": record["email"]})
+    return {"success": True, "message": "Password has been reset successfully."}
+
+@app.get("/api/auth/verify-reset-token")
+async def verify_reset_token(token: str):
+    record = await db.password_resets.find_one({"token": token})
+    if not record:
+        raise HTTPException(status_code=400, detail="Invalid reset link.")
+    expires_at = record["expires_at"]
+    if isinstance(expires_at, str):
+        expires_at = datetime.fromisoformat(expires_at)
+    if datetime.now(timezone.utc) > expires_at:
+        await db.password_resets.delete_one({"token": token})
+        raise HTTPException(status_code=400, detail="Reset link has expired.")
+    return {"valid": True, "email": record["email"]}
 
 # --- Team Management ---
 @app.get("/api/team")
