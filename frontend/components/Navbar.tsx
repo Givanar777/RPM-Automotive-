@@ -62,22 +62,11 @@ export default function Navbar() {
             
             <a 
               data-testid="nav-phone-link"
-              className="hidden lg:flex items-center gap-2 text-zinc-300 font-bold text-sm" 
+              className="flex items-center gap-2 text-[#38BDF8] font-bold text-sm hover:text-[#38BDF8]/80 transition-colors" 
               href={`tel:${siteConfig.phone}`}
             >
               <Phone className="w-4 h-4" />
               {siteConfig.phoneFormatted}
-            </a>
-
-            <a href={`tel:${siteConfig.phone}`} data-testid="nav-call-cta" className="hidden sm:block">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#38BDF8] text-[#0B1929] px-5 py-2 rounded-lg font-bold hover:bg-[#38BDF8]/90 transition-all text-sm uppercase tracking-wider flex items-center gap-2"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                {t.nav.cta}
-              </motion.button>
             </a>
 
             {/* Mobile hamburger */}
@@ -140,7 +129,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                 >
                   <Phone className="w-5 h-5" />
-                  {t.nav.cta}: {siteConfig.phoneFormatted}
+                  {t.nav.cta}
                 </a>
               </div>
             </div>

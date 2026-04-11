@@ -64,7 +64,7 @@ export default function ContactForm() {
                 className="bg-[#38BDF8] text-[#0B1929] px-10 py-5 rounded-xl font-bold text-lg shadow-lg shadow-[#38BDF8]/20 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
               >
                 <Phone className="w-6 h-6" />
-                {t.contact.callCta}: {siteConfig.phoneFormatted}
+                {t.contact.callCta}
               </motion.button>
             </a>
             <a href={`sms:${siteConfig.phone}`} data-testid="contact-text-btn">
@@ -74,7 +74,7 @@ export default function ContactForm() {
                 className="bg-white/5 backdrop-blur border border-slate-500/30 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
               >
                 <MessageCircle className="w-6 h-6" />
-                {t.contact.textCta}: {siteConfig.phoneFormatted}
+                {t.contact.textCta}
               </motion.button>
             </a>
           </div>
