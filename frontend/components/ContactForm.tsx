@@ -37,7 +37,6 @@ export default function ContactForm() {
       setTimeout(() => setIsSuccess(false), 5000);
       (e.target as HTMLFormElement).reset();
     } catch {
-      // Still show success to user since form data captured
       setIsSuccess(true);
       setTimeout(() => setIsSuccess(false), 5000);
     }
@@ -45,7 +44,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contacto" data-testid="contact-section" className="py-24 bg-zinc-950 text-white overflow-hidden">
+    <section id="contacto" data-testid="contact-section" className="py-24 bg-[#0F2640] border-t border-[#1A3652] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Call/Text CTA Banner */}
         <motion.div
@@ -54,15 +53,15 @@ export default function ContactForm() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-4 font-outfit tracking-tight">{t.contact.title}</h2>
-          <p className="text-zinc-400 mb-10 text-lg max-w-xl mx-auto">{t.contact.subtitle}</p>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 font-outfit tracking-tight text-white">{t.contact.title}</h2>
+          <p className="text-slate-400 mb-10 text-lg max-w-xl mx-auto">{t.contact.subtitle}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a href={`tel:${siteConfig.phone}`} data-testid="contact-call-btn">
               <motion.button
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#0070ea] text-white px-10 py-5 rounded-xl font-bold text-lg shadow-lg shadow-blue-500/20 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
+                className="bg-[#38BDF8] text-[#0B1929] px-10 py-5 rounded-xl font-bold text-lg shadow-lg shadow-[#38BDF8]/20 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
               >
                 <Phone className="w-6 h-6" />
                 {t.contact.callCta}: {siteConfig.phoneFormatted}
@@ -72,7 +71,7 @@ export default function ContactForm() {
               <motion.button
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white/10 backdrop-blur border border-white/20 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
+                className="bg-white/5 backdrop-blur border border-slate-500/30 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
               >
                 <MessageCircle className="w-6 h-6" />
                 {t.contact.textCta}: {siteConfig.phoneFormatted}
@@ -82,13 +81,13 @@ export default function ContactForm() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Form for Lead Capture */}
+          {/* Contact Form */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-zinc-500 text-sm uppercase tracking-[0.2em] font-bold mb-6">
+            <p className="text-slate-500 text-sm uppercase tracking-[0.2em] font-bold mb-6">
               {language === 'es' ? 'O envianos tus datos' : 'Or send us your details'}
             </p>
             
@@ -97,67 +96,55 @@ export default function ContactForm() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 data-testid="contact-success-message"
-                className="bg-green-500/10 border border-green-500/20 p-8 rounded-xl text-center"
+                className="bg-emerald-500/10 border border-emerald-500/20 p-8 rounded-xl text-center"
               >
-                <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">{t.contact.form.success}</h3>
-                <p className="text-zinc-300">{t.contact.form.successMsg}</p>
+                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-2 text-white">{t.contact.form.success}</h3>
+                <p className="text-slate-400">{t.contact.form.successMsg}</p>
               </motion.div>
             ) : (
               <form className="space-y-5" onSubmit={handleSubmit} data-testid="contact-form">
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold mb-2 text-zinc-400 uppercase tracking-wider">{t.contact.form.name}</label>
+                    <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.name}</label>
                     <input 
-                      name="name"
-                      required
-                      data-testid="contact-name-input"
-                      className="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-3 text-white focus:border-[#0070ea] outline-none transition-all text-sm" 
-                      placeholder={t.contact.form.namePlaceholder} 
-                      type="text"
+                      name="name" required data-testid="contact-name-input"
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      placeholder={t.contact.form.namePlaceholder} type="text"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold mb-2 text-zinc-400 uppercase tracking-wider">{t.contact.form.phone}</label>
+                    <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.phone}</label>
                     <input 
-                      name="phone"
-                      required
-                      data-testid="contact-phone-input"
-                      className="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-3 text-white focus:border-[#0070ea] outline-none transition-all text-sm" 
-                      placeholder={t.contact.form.phonePlaceholder} 
-                      type="tel"
+                      name="phone" required data-testid="contact-phone-input"
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      placeholder={t.contact.form.phonePlaceholder} type="tel"
                     />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold mb-2 text-zinc-400 uppercase tracking-wider">{t.contact.form.email}</label>
+                    <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.email}</label>
                     <input 
-                      name="email"
-                      data-testid="contact-email-input"
-                      className="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-3 text-white focus:border-[#0070ea] outline-none transition-all text-sm" 
-                      placeholder={t.contact.form.emailPlaceholder} 
-                      type="email"
+                      name="email" data-testid="contact-email-input"
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      placeholder={t.contact.form.emailPlaceholder} type="email"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold mb-2 text-zinc-400 uppercase tracking-wider">{t.contact.form.vehicle}</label>
+                    <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.vehicle}</label>
                     <input 
-                      name="vehicle"
-                      data-testid="contact-vehicle-input"
-                      className="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-3 text-white focus:border-[#0070ea] outline-none transition-all text-sm" 
-                      placeholder={t.contact.form.vehiclePlaceholder} 
-                      type="text"
+                      name="vehicle" data-testid="contact-vehicle-input"
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      placeholder={t.contact.form.vehiclePlaceholder} type="text"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold mb-2 text-zinc-400 uppercase tracking-wider">{t.contact.form.serviceType}</label>
+                  <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.serviceType}</label>
                   <select 
-                    name="serviceType"
-                    data-testid="contact-service-select"
-                    defaultValue=""
-                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-3 text-white focus:border-[#0070ea] outline-none transition-all text-sm appearance-none"
+                    name="serviceType" data-testid="contact-service-select" defaultValue=""
+                    className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm appearance-none"
                   >
                     <option value="" disabled>{language === 'es' ? 'Seleccione un servicio' : 'Select a service'}</option>
                     {t.contact.form.services.map((service) => (
@@ -166,27 +153,21 @@ export default function ContactForm() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold mb-2 text-zinc-400 uppercase tracking-wider">{t.contact.form.problem}</label>
+                  <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.problem}</label>
                   <textarea 
-                    name="message"
-                    data-testid="contact-message-textarea"
-                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-3 text-white focus:border-[#0070ea] outline-none transition-all text-sm" 
-                    placeholder={t.contact.form.problemPlaceholder} 
-                    rows={3}
+                    name="message" data-testid="contact-message-textarea"
+                    className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                    placeholder={t.contact.form.problemPlaceholder} rows={3}
                   ></textarea>
                 </div>
                 <motion.button 
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  disabled={isSubmitting}
-                  data-testid="contact-submit-btn"
-                  className="w-full bg-[#0070ea] py-4 rounded-lg font-bold text-sm hover:bg-blue-600 transition-all uppercase tracking-widest flex items-center justify-center gap-2 disabled:opacity-50"
+                  disabled={isSubmitting} data-testid="contact-submit-btn"
+                  className="w-full bg-[#38BDF8] text-[#0B1929] py-4 rounded-lg font-bold text-sm hover:bg-[#38BDF8]/90 transition-all uppercase tracking-widest flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {isSubmitting ? (language === 'es' ? 'Enviando...' : 'Sending...') : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      {t.contact.form.cta}
-                    </>
+                    <><Send className="w-4 h-4" />{t.contact.form.cta}</>
                   )}
                 </motion.button>
               </form>
@@ -200,57 +181,53 @@ export default function ContactForm() {
             viewport={{ once: true }}
             className="flex flex-col gap-6"
           >
-            <div className="bg-zinc-900 p-8 rounded-xl border border-zinc-800">
-              <h3 className="text-lg font-bold mb-6 flex items-center gap-2 font-outfit">
-                <MapPin className="w-5 h-5 text-[#0070ea]" />
+            <div className="bg-[#0B1929] p-8 rounded-xl border border-[#1A3652]">
+              <h3 className="text-lg font-bold mb-6 flex items-center gap-2 font-outfit text-white">
+                <MapPin className="w-5 h-5 text-[#38BDF8]" />
                 {language === 'es' ? 'Visita Nuestro Taller' : 'Visit Our Shop'}
               </h3>
-              <p className="text-zinc-300 mb-2 text-sm">{siteConfig.address}</p>
-              <p className="text-zinc-300 mb-4 text-sm">{siteConfig.city}</p>
-              <a href={`tel:${siteConfig.phone}`} className="text-[#0070ea] font-bold text-lg block mb-6" data-testid="info-phone-link">
+              <p className="text-slate-400 mb-2 text-sm">{siteConfig.address}</p>
+              <p className="text-slate-400 mb-4 text-sm">{siteConfig.city}</p>
+              <a href={`tel:${siteConfig.phone}`} className="text-[#38BDF8] font-bold text-lg block mb-6" data-testid="info-phone-link">
                 {siteConfig.phoneFormatted}
               </a>
               <a 
-                href={siteConfig.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer"
                 data-testid="directions-link"
-                className="inline-block text-sm text-zinc-400 hover:text-white underline underline-offset-4 transition-colors"
+                className="inline-block text-sm text-slate-500 hover:text-[#38BDF8] underline underline-offset-4 transition-colors"
               >
                 {language === 'es' ? 'Obtener Direcciones' : 'Get Directions'} &rarr;
               </a>
             </div>
 
-            <div className="bg-zinc-900 p-8 rounded-xl border border-zinc-800">
-              <h3 className="text-lg font-bold mb-6 flex items-center gap-2 font-outfit">
-                <Clock className="w-5 h-5 text-[#0070ea]" />
+            <div className="bg-[#0B1929] p-8 rounded-xl border border-[#1A3652]">
+              <h3 className="text-lg font-bold mb-6 flex items-center gap-2 font-outfit text-white">
+                <Clock className="w-5 h-5 text-[#38BDF8]" />
                 {t.contact.info.hours}
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-zinc-400">{language === 'es' ? 'Lunes - Viernes' : 'Monday - Friday'}</span>
+                  <span className="text-slate-500">{language === 'es' ? 'Lunes - Viernes' : 'Monday - Friday'}</span>
                   <span className="text-white font-medium">{siteConfig.hours.weekdays}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-zinc-400">{language === 'es' ? 'Sabado' : 'Saturday'}</span>
+                  <span className="text-slate-500">{language === 'es' ? 'Sabado' : 'Saturday'}</span>
                   <span className="text-white font-medium">{siteConfig.hours.saturday}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-zinc-400">{language === 'es' ? 'Domingo' : 'Sunday'}</span>
-                  <span className="text-[#0070ea] font-medium">{language === 'es' ? 'Cerrado' : 'Closed'}</span>
+                  <span className="text-slate-500">{language === 'es' ? 'Domingo' : 'Sunday'}</span>
+                  <span className="text-[#38BDF8] font-medium">{language === 'es' ? 'Cerrado' : 'Closed'}</span>
                 </div>
               </div>
             </div>
 
-            {/* Google Maps Embed */}
-            <div className="rounded-xl overflow-hidden border border-zinc-800 h-48" data-testid="google-maps-embed">
+            {/* Google Maps */}
+            <div className="rounded-xl overflow-hidden border border-[#1A3652] h-48" data-testid="google-maps-embed">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3186.3!2d-122.03!3d36.97!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s110+Stanford+Ave%2C+Santa+Cruz%2C+CA+95062!5e0!3m2!1sen!2sus!4v1700000000000"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
-                allowFullScreen
-                loading="lazy"
+                width="100%" height="100%"
+                style={{ border: 0 }}
+                allowFullScreen loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="RPM Automotive Location"
               />

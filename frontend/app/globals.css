@@ -3,8 +3,12 @@
 @theme {
   --font-outfit: 'Outfit', sans-serif;
   --font-dm-sans: 'DM Sans', sans-serif;
-  --color-rpm-blue: #0070EA;
-  --color-rpm-dark: #0A0A0A;
+  --color-rpm-accent: #38BDF8;
+  --color-rpm-navy: #0B1929;
+  --color-rpm-navy-light: #0F2640;
+  --color-rpm-steel: #1A3652;
+  --color-rpm-chrome: #E2E8F0;
+  --color-rpm-silver: #94A3B8;
 }
 
 html {
@@ -13,6 +17,8 @@ html {
 
 body {
   font-family: var(--font-dm-sans);
+  background-color: #0B1929;
+  color: #E2E8F0;
 }
 
 .font-outfit {
