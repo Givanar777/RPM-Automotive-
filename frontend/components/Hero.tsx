@@ -10,7 +10,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section data-testid="hero-section" className="relative h-screen min-h-[700px] flex items-end overflow-hidden">
+    <section data-testid="hero-section" className="relative h-screen min-h-[850px] flex items-end overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10"></div>
         <video
@@ -25,17 +25,17 @@ export default function Hero() {
         </video>
       </div>
       
-      <div className="relative z-20 px-8 md:px-16 max-w-[1400px] mx-auto w-full pb-24">
+      <div className="relative z-20 px-8 md:px-16 max-w-[1400px] mx-auto w-full pb-16 md:pb-20">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="max-w-3xl"
         >
-          <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-6">
+          <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-8">
             {t.hero.badge}
           </div>
-          <h1 className="text-5xl md:text-[5.5rem] font-bold text-white leading-[0.95] mb-8 font-outfit tracking-[-0.03em]">
+          <h1 className="text-5xl md:text-[5.5rem] font-bold text-white leading-[0.95] mb-10 font-outfit tracking-[-0.03em]">
             {t.hero.title}<br /><span className="text-white/50">{t.hero.location}</span>
           </h1>
           <p className="text-base md:text-lg text-white/40 font-light mb-14 leading-relaxed max-w-lg">
