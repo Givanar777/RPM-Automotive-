@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Phone, Activity, Disc, Wrench, Thermometer, CheckCircle2 } from 'lucide-react';
+import { Phone, Activity, Disc, Wrench, Thermometer, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/context/LanguageContext';
@@ -16,49 +16,50 @@ export default function ServiciosPage() {
     <main className="min-h-screen bg-[#0B1929]">
       <Navbar />
       
-      <section className="pt-32 pb-20 bg-[#0F2640] border-b border-[#1A3652]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 font-outfit tracking-tighter">
+      {/* Hero */}
+      <section className="pt-48 pb-32 border-b border-white/5">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}>
+            <div className="text-[11px] uppercase tracking-[0.3em] text-white/30 font-medium mb-6">Our Expertise</div>
+            <h1 className="text-5xl md:text-[5rem] font-bold text-white font-outfit tracking-[-0.03em] leading-[0.95] mb-8 max-w-4xl">
               {t.servicesPage.hero.title}
             </h1>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/35 max-w-2xl leading-relaxed">
               {t.servicesPage.hero.subtitle}
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid md:grid-cols-2 gap-6">
+      {/* Service Cards */}
+      <section className="py-32 max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="grid md:grid-cols-2 gap-px bg-white/5">
           {t.servicesPage.cards.map((card, index) => {
             const Icon = icons[index];
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 data-testid={`services-page-card-${index}`}
-                className="bg-[#0F2640] border border-[#1A3652] rounded-2xl p-8 md:p-10 hover:border-[#B0BEC5]/30 hover:shadow-lg hover:shadow-[#B0BEC5]/5 transition-all flex flex-col justify-between group"
+                className="bg-[#0B1929] p-10 md:p-14 flex flex-col justify-between group hover:bg-white/[0.02] transition-all duration-500"
               >
                 <div>
-                  <div className="w-14 h-14 bg-[#B0BEC5]/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-[#B0BEC5]/20 transition-colors">
-                    <Icon className="w-7 h-7 text-[#B0BEC5]" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 font-outfit">{card.title}</h3>
-                  <div className="flex items-start gap-3 mb-8">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" />
-                    <p className="text-slate-400 leading-relaxed italic text-sm">{card.focus}</p>
+                  <Icon className="w-5 h-5 text-white/15 mb-10 group-hover:text-white/40 transition-colors duration-500" />
+                  <h3 className="text-2xl font-bold text-white mb-4 font-outfit tracking-tight">{card.title}</h3>
+                  <div className="flex items-start gap-3 mb-10">
+                    <ChevronRight className="w-4 h-4 text-white/20 mt-0.5 shrink-0" />
+                    <p className="text-white/35 leading-relaxed text-[15px]">{card.focus}</p>
                   </div>
                 </div>
                 <a 
                   href={`tel:${siteConfig.phone}`}
                   data-testid={`services-call-btn-${index}`}
-                  className="w-full bg-white/10 backdrop-blur-md border border-[#B0BEC5]/40 text-white hover:bg-white/20 py-4 rounded-xl font-bold text-center transition-all flex items-center justify-center gap-3"
+                  className="inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.15em] text-white/30 hover:text-white transition-colors duration-300"
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4" />
                   {card.cta}
                 </a>
               </motion.div>
@@ -67,21 +68,49 @@ export default function ServiciosPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#0F2640] border-t border-[#1A3652] overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl md:text-4xl font-black mb-6 font-outfit tracking-tight text-white">
-              {t.servicesPage.maintenance.title}
-            </h2>
-            <p className="text-xl text-slate-400 leading-relaxed mb-8">
-              {t.servicesPage.maintenance.text}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <div className="bg-[#B0BEC5]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#B0BEC5]/20 text-[#B0BEC5]">European Imports</div>
-              <div className="bg-[#B0BEC5]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#B0BEC5]/20 text-[#B0BEC5]">American Classics</div>
-              <div className="bg-[#B0BEC5]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#B0BEC5]/20 text-[#B0BEC5]">Domestic & Foreign</div>
-            </div>
+      {/* Maintenance */}
+      <section className="py-32 border-t border-white/5">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+              <div className="text-[11px] uppercase tracking-[0.3em] text-white/30 font-medium mb-6">Specialization</div>
+              <h2 className="text-4xl md:text-5xl font-bold font-outfit tracking-tight text-white mb-8">
+                {t.servicesPage.maintenance.title}
+              </h2>
+              <p className="text-lg text-white/35 leading-relaxed">
+                {t.servicesPage.maintenance.text}
+              </p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex flex-col gap-px bg-white/5">
+              {['European Imports', 'American Classics', 'Domestic & Foreign'].map((item) => (
+                <div key={item} className="bg-[#0B1929] px-8 py-6 flex items-center justify-between group hover:bg-white/[0.02] transition-all duration-500">
+                  <span className="text-white/50 text-[15px] group-hover:text-white/70 transition-colors duration-500">{item}</span>
+                  <ChevronRight className="w-4 h-4 text-white/15 group-hover:text-white/40 transition-colors duration-500" />
+                </div>
+              ))}
+            </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-32 border-t border-white/5">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-16 text-center">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <h2 className="text-3xl md:text-4xl font-bold font-outfit tracking-tight text-white mb-10">
+              {t.contact.title}
+            </h2>
+            <a href={`tel:${siteConfig.phone}`}>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white text-black px-10 py-4 text-[13px] uppercase tracking-[0.15em] font-medium transition-all inline-flex items-center gap-3"
+              >
+                <Phone className="w-4 h-4" />
+                {siteConfig.phoneFormatted}
+              </motion.button>
+            </a>
+          </motion.div>
         </div>
       </section>
 

@@ -135,9 +135,9 @@ async def startup():
     creds_dir = "/app/memory"
     os.makedirs(creds_dir, exist_ok=True)
     with open(f"{creds_dir}/test_credentials.md", "w") as f:
-        f.write(f"# Test Credentials\n\n")
+        f.write("# Test Credentials\n\n")
         f.write(f"## Admin\n- Email: {admin_email}\n- Password: {admin_password}\n- Role: admin\n\n")
-        f.write(f"## Auth Endpoints\n- POST /api/auth/login\n- POST /api/auth/register\n- GET /api/auth/me\n- POST /api/auth/logout\n")
+        f.write("## Auth Endpoints\n- POST /api/auth/login\n- POST /api/auth/register\n- GET /api/auth/me\n- POST /api/auth/logout\n")
 
 # --- Pydantic Models ---
 class LoginRequest(BaseModel):
@@ -177,6 +177,7 @@ class ServiceRecord(BaseModel):
     service_type: str
     description: str
     date: str
+    mileage: Optional[int] = 0
     cost: Optional[float] = 0
     technician: Optional[str] = ""
     status: Optional[str] = "completed"
@@ -462,6 +463,31 @@ async def delete_service_record(record_id: str, user: dict = Depends(get_current
     result = await db.service_records.delete_one({"_id": ObjectId(record_id)})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Record not found")
+    return {"success": True}
+
+@app.patch("/api/services/{record_id}")
+async def update_service_record(record_id: str, request: Request, user: dict = Depends(get_current_user)):
+    body = await request.json()
+    updates = {k: v for k, v in body.items() if k != "id" and v is not None}
+    if not updates:
+        raise HTTPException(status_code=400, detail="No fields to update")
+    updates["updated_at"] = datetime.now(timezone.utc).isoformat()
+    updates["updated_by"] = user.get("name", user.get("email", ""))
+    result = await db.service_records.update_one({"_id": ObjectId(record_id)}, {"$set": updates})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Record not found")
+    return {"success": True}
+
+@app.patch("/api/clients/{phone}")
+async def update_client(phone: str, request: Request, user: dict = Depends(get_current_user)):
+    body = await request.json()
+    updates = {k: v for k, v in body.items() if k not in ("id", "_id") and v is not None}
+    if not updates:
+        raise HTTPException(status_code=400, detail="No fields to update")
+    updates["updated_at"] = datetime.now(timezone.utc).isoformat()
+    result = await db.clients.update_one({"phone": phone}, {"$set": updates})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Client not found")
     return {"success": True}
 
 # --- Dashboard Stats ---
