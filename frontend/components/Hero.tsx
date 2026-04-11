@@ -14,14 +14,16 @@ export default function Hero() {
     <section data-testid="hero-section" className="relative h-[90vh] min-h-[650px] flex items-center overflow-hidden pt-14">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1929]/90 via-[#0B1929]/70 to-[#0B1929]/50 z-10"></div>
-        <Image 
-          alt="RPM Auto Repair Shop" 
-          className="w-full h-full object-cover" 
-          src={siteConfig.images.heroBackground}
-          fill
-          priority
-          referrerPolicy="no-referrer"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          poster={siteConfig.images.heroBackground}
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
       </div>
       
       <div className="relative z-20 px-6 md:px-12 max-w-7xl mx-auto w-full">
