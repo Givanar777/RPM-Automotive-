@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Phone, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -11,9 +10,9 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section data-testid="hero-section" className="relative h-[90vh] min-h-[650px] flex items-center overflow-hidden pt-14">
+    <section data-testid="hero-section" className="relative h-screen min-h-[700px] flex items-end overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1929]/90 via-[#0B1929]/70 to-[#0B1929]/50 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10"></div>
         <video
           autoPlay
           muted
@@ -26,40 +25,40 @@ export default function Hero() {
         </video>
       </div>
       
-      <div className="relative z-20 px-6 md:px-12 max-w-7xl mx-auto w-full">
+      <div className="relative z-20 px-8 md:px-16 max-w-[1400px] mx-auto w-full pb-24">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl"
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-3xl"
         >
-          <span className="inline-block bg-[#B0BEC5]/15 border border-[#B0BEC5]/30 px-4 py-1.5 text-[#B0BEC5] text-xs font-bold uppercase tracking-[0.2em] rounded mb-8">
+          <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-6">
             {t.hero.badge}
-          </span>
-          <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] mb-6 font-outfit tracking-tighter">
-            {t.hero.title}<span className="text-[#B0BEC5]">{t.hero.location}</span>
+          </div>
+          <h1 className="text-5xl md:text-[5.5rem] font-bold text-white leading-[0.95] mb-8 font-outfit tracking-[-0.03em]">
+            {t.hero.title}<br /><span className="text-white/50">{t.hero.location}</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 font-light mb-12 leading-relaxed max-w-xl">
+          <p className="text-base md:text-lg text-white/40 font-light mb-14 leading-relaxed max-w-lg">
             {t.hero.subtitle}
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex gap-4">
             <a href={`tel:${siteConfig.phone}`} data-testid="hero-call-btn">
               <motion.button 
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white/10 backdrop-blur-md border border-[#B0BEC5]/40 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg shadow-white/5 hover:bg-white/20 transition-all flex items-center gap-3"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white text-black px-8 py-3.5 text-[13px] uppercase tracking-[0.15em] font-medium transition-all flex items-center gap-3"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-4 h-4" />
                 {t.hero.ctaCall}
               </motion.button>
             </a>
             <a href={`sms:${siteConfig.phone}`} data-testid="hero-text-btn">
               <motion.button 
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white/5 backdrop-blur-md border border-slate-500/30 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition-all flex items-center gap-3"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="border border-white/20 text-white px-8 py-3.5 text-[13px] uppercase tracking-[0.15em] font-medium hover:bg-white/5 transition-all flex items-center gap-3"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-4 h-4" />
                 {t.hero.ctaText}
               </motion.button>
             </a>

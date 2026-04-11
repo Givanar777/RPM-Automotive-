@@ -11,45 +11,46 @@ export default function Trust() {
   const icons = [Wrench, Shield, Gauge, Handshake, SearchCheck, MessageSquare];
 
   return (
-    <section data-testid="trust-section" className="bg-[#0F2640] py-24 border-y border-[#1A3652]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-12 gap-12">
+    <section data-testid="trust-section" className="py-32 border-y border-white/5">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="grid lg:grid-cols-12 gap-20">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="lg:col-span-4 flex flex-col justify-center"
+            className="lg:col-span-5 flex flex-col justify-center"
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-6 font-outfit tracking-tight text-white">{t.trust.title}</h2>
-            <p className="text-slate-400 mb-8 text-lg leading-relaxed">
+            <div className="text-[11px] uppercase tracking-[0.3em] text-white/30 font-medium mb-4">Why RPM</div>
+            <h2 className="text-4xl md:text-5xl font-bold font-outfit tracking-tight text-white mb-8">{t.trust.title}</h2>
+            <p className="text-white/35 text-lg leading-relaxed mb-10">
               {t.trust.description}
             </p>
-            <div className="flex items-center gap-4 p-4 bg-[#1A3652]/50 rounded-lg border border-[#1A3652]">
-              <div className="flex text-amber-400">
+            <div className="flex items-center gap-3">
+              <div className="flex text-white/30">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current" />
+                  <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
-              <span className="font-bold text-sm text-slate-300">{t.trust.rating}</span>
+              <span className="text-white/40 text-sm">{t.trust.rating}</span>
             </div>
           </motion.div>
           
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-px bg-white/5">
             {t.trust.benefits.map((benefit, index) => {
               const Icon = icons[index];
               return (
                 <motion.div 
                   key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.08 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: index * 0.06 }}
                   viewport={{ once: true }}
-                  className="bg-[#0B1929] p-6 rounded-xl border border-[#1A3652] flex flex-col items-center text-center hover:border-[#B0BEC5]/30 hover:shadow-md hover:shadow-[#B0BEC5]/5 transition-all"
+                  className="bg-[#0B1929] p-6 flex flex-col group hover:bg-white/[0.02] transition-all duration-500"
                   data-testid={`trust-benefit-${index}`}
                 >
-                  <Icon className="w-8 h-8 text-[#B0BEC5] mb-3" />
-                  <h4 className="font-bold mb-1 text-sm font-outfit text-white">{benefit.title}</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">{benefit.description}</p>
+                  <Icon className="w-5 h-5 text-white/15 mb-4 group-hover:text-white/40 transition-colors duration-500" />
+                  <h4 className="font-medium text-sm text-white mb-2 tracking-tight">{benefit.title}</h4>
+                  <p className="text-[13px] text-white/25 leading-relaxed group-hover:text-white/40 transition-colors duration-500">{benefit.description}</p>
                 </motion.div>
               );
             })}

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Wrench, Monitor, Calendar, CheckCircle2 } from 'lucide-react';
+import { Wrench, Monitor, Calendar, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -15,34 +15,30 @@ export default function Services() {
   ];
 
   return (
-    <section id="servicios" data-testid="services-section" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="mb-16">
-        <h2 className="text-3xl md:text-5xl font-black mb-4 font-outfit tracking-tight text-white">{t.services.title}</h2>
-        <div className="h-1 w-20 bg-gradient-to-r from-[#B0BEC5] to-transparent"></div>
+    <section id="servicios" data-testid="services-section" className="py-32 px-8 md:px-16 max-w-[1400px] mx-auto">
+      <div className="mb-20">
+        <div className="text-[11px] uppercase tracking-[0.3em] text-white/30 font-medium mb-4">Our Expertise</div>
+        <h2 className="text-4xl md:text-5xl font-bold font-outfit tracking-tight text-white">{t.services.title}</h2>
       </div>
       
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-px bg-white/5">
         {services.map((service, index) => (
           <motion.div 
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{ delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-[#0F2640] p-8 rounded-xl border border-[#1A3652] hover:border-[#B0BEC5]/30 hover:shadow-lg hover:shadow-[#B0BEC5]/5 transition-all group"
+            className="bg-[#0B1929] p-10 group hover:bg-white/[0.02] transition-all duration-500"
             data-testid={`service-card-${index}`}
           >
-            <div className="mb-6">
-              <div className="w-12 h-12 bg-[#B0BEC5]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#B0BEC5]/20 transition-colors">
-                <service.icon className="w-6 h-6 text-[#B0BEC5]" />
-              </div>
-              <h3 className="text-xl font-bold font-outfit text-white">{service.title}</h3>
-            </div>
-            <ul className="space-y-3">
+            <service.icon className="w-5 h-5 text-white/20 mb-8 group-hover:text-white/50 transition-colors duration-500" />
+            <h3 className="text-lg font-medium font-outfit text-white mb-6 tracking-tight">{service.title}</h3>
+            <ul className="space-y-4">
               {service.items.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#B0BEC5]/60 shrink-0 mt-1" />
-                  <span className="text-sm text-slate-400">{item}</span>
+                <li key={i} className="flex items-center gap-3 text-white/35 text-sm group-hover:text-white/50 transition-colors duration-500">
+                  <ChevronRight className="w-3 h-3 shrink-0" />
+                  {item}
                 </li>
               ))}
             </ul>
