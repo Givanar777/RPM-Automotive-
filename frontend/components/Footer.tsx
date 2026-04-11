@@ -14,6 +14,7 @@ export default function Footer() {
         <div className="mb-6 md:mb-0">
           <Image src={siteConfig.logo} alt={siteConfig.name} width={80} height={32} className="h-8 w-auto object-contain mb-1" />
           <div className="text-slate-600 text-xs">{siteConfig.address} {siteConfig.city}</div>
+          <a href={`mailto:${siteConfig.email}`} className="text-slate-600 text-xs hover:text-[#38BDF8] transition-colors">{siteConfig.email}</a>
           <div className="text-[10px] text-slate-700 uppercase tracking-widest mt-2">
             &copy; {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}
           </div>

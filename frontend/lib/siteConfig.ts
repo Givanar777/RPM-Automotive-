@@ -7,6 +7,7 @@ export const siteConfig = {
   address: '110 Stanford Ave.',
   city: 'Santa Cruz, CA 95062',
   fullAddress: '110 Stanford Ave. Santa Cruz, CA 95062',
+  email: 'contact@rpmautomotivesc.com',
   googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=110+Stanford+Ave+Santa+Cruz+CA+95062',
 
   // Logo - Update this path to change the site logo

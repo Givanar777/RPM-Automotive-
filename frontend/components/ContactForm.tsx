@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Phone, MessageCircle, Send, CheckCircle2, Clock } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Send, CheckCircle2, Clock, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/context/LanguageContext';
 import { siteConfig } from '@/lib/siteConfig';
@@ -188,8 +188,11 @@ export default function ContactForm() {
               </h3>
               <p className="text-slate-400 mb-2 text-sm">{siteConfig.address}</p>
               <p className="text-slate-400 mb-4 text-sm">{siteConfig.city}</p>
-              <a href={`tel:${siteConfig.phone}`} className="text-[#38BDF8] font-bold text-lg block mb-6" data-testid="info-phone-link">
+              <a href={`tel:${siteConfig.phone}`} className="text-[#38BDF8] font-bold text-lg block mb-2" data-testid="info-phone-link">
                 {siteConfig.phoneFormatted}
+              </a>
+              <a href={`mailto:${siteConfig.email}`} className="text-slate-400 text-sm flex items-center gap-2 mb-6 hover:text-[#38BDF8] transition-colors" data-testid="info-email-link">
+                <Mail className="w-4 h-4" /> {siteConfig.email}
               </a>
               <a 
                 href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer"
