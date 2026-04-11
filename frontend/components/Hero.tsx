@@ -31,11 +31,11 @@ export default function Hero() {
           transition={{ duration: 0.7 }}
           className="max-w-2xl"
         >
-          <span className="inline-block bg-[#38BDF8]/15 border border-[#38BDF8]/30 px-4 py-1.5 text-[#38BDF8] text-xs font-bold uppercase tracking-[0.2em] rounded mb-8">
+          <span className="inline-block bg-[#B0BEC5]/15 border border-[#B0BEC5]/30 px-4 py-1.5 text-[#B0BEC5] text-xs font-bold uppercase tracking-[0.2em] rounded mb-8">
             {t.hero.badge}
           </span>
           <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] mb-6 font-outfit tracking-tighter">
-            {t.hero.title}<span className="text-[#38BDF8]">{t.hero.location}</span>
+            {t.hero.title}<span className="text-[#B0BEC5]">{t.hero.location}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 font-light mb-12 leading-relaxed max-w-xl">
             {t.hero.subtitle}
@@ -45,7 +45,7 @@ export default function Hero() {
               <motion.button 
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#38BDF8] text-[#0B1929] px-8 py-4 rounded-lg font-bold text-lg shadow-lg shadow-[#38BDF8]/20 transition-all flex items-center gap-3"
+                className="bg-white/10 backdrop-blur-md border border-[#B0BEC5]/40 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg shadow-white/5 hover:bg-white/20 transition-all flex items-center gap-3"
               >
                 <Phone className="w-5 h-5" />
                 {t.hero.ctaCall}

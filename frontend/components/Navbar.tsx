@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav data-testid="main-navbar" className="fixed top-0 w-full z-50 bg-zinc-950/40 backdrop-blur-xl border-b border-white/5">
+      <nav data-testid="main-navbar" className="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex justify-between items-center h-14 px-6 md:px-12 max-w-7xl mx-auto">
           <Link href="/" data-testid="logo-link" className="flex items-center">
             <Image src={siteConfig.logo} alt={siteConfig.name} width={90} height={28} className="h-7 w-auto object-contain" priority />
@@ -37,7 +37,7 @@ export default function Navbar() {
                 data-testid={`nav-link-${link.href.replace('/', '').replace('#', '')}`}
                 className={`${
                   pathname === link.href 
-                    ? 'text-[#38BDF8] border-b-2 border-[#38BDF8]' 
+                    ? 'text-[#B0BEC5] border-b-2 border-[#B0BEC5]' 
                     : 'text-zinc-300 hover:text-white'
                 } transition-colors py-1`}
               >
@@ -62,7 +62,7 @@ export default function Navbar() {
             
             <a 
               data-testid="nav-phone-link"
-              className="flex items-center gap-2 text-[#38BDF8] font-bold text-sm hover:text-[#38BDF8]/80 transition-colors" 
+              className="flex items-center gap-2 text-[#B0BEC5] font-bold text-sm hover:text-[#B0BEC5]/80 transition-colors" 
               href={`tel:${siteConfig.phone}`}
             >
               <Phone className="w-4 h-4" />
@@ -101,7 +101,7 @@ export default function Navbar() {
                   data-testid={`mobile-nav-${link.href.replace('/', '').replace('#', '')}`}
                   className={`block py-3 px-4 rounded-lg text-base font-medium transition-colors ${
                     pathname === link.href
-                      ? 'bg-[#38BDF8]/10 text-[#38BDF8]'
+                      ? 'bg-[#B0BEC5]/10 text-[#B0BEC5]'
                       : 'text-zinc-300 hover:bg-zinc-900'
                   }`}
                 >
@@ -125,7 +125,7 @@ export default function Navbar() {
                 <a
                   href={`tel:${siteConfig.phone}`}
                   data-testid="mobile-call-btn"
-                  className="flex items-center justify-center gap-2 bg-[#38BDF8] text-[#0B1929] py-3 rounded-lg font-bold text-base"
+                  className="flex items-center justify-center gap-2 bg-[#B0BEC5] text-[#0B1929] py-3 rounded-lg font-bold text-base"
                   onClick={() => setMobileOpen(false)}
                 >
                   <Phone className="w-5 h-5" />

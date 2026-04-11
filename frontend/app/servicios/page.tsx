@@ -41,11 +41,11 @@ export default function ServiciosPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 data-testid={`services-page-card-${index}`}
-                className="bg-[#0F2640] border border-[#1A3652] rounded-2xl p-8 md:p-10 hover:border-[#38BDF8]/30 hover:shadow-lg hover:shadow-[#38BDF8]/5 transition-all flex flex-col justify-between group"
+                className="bg-[#0F2640] border border-[#1A3652] rounded-2xl p-8 md:p-10 hover:border-[#B0BEC5]/30 hover:shadow-lg hover:shadow-[#B0BEC5]/5 transition-all flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-14 h-14 bg-[#38BDF8]/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-[#38BDF8]/20 transition-colors">
-                    <Icon className="w-7 h-7 text-[#38BDF8]" />
+                  <div className="w-14 h-14 bg-[#B0BEC5]/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-[#B0BEC5]/20 transition-colors">
+                    <Icon className="w-7 h-7 text-[#B0BEC5]" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 font-outfit">{card.title}</h3>
                   <div className="flex items-start gap-3 mb-8">
@@ -56,7 +56,7 @@ export default function ServiciosPage() {
                 <a 
                   href={`tel:${siteConfig.phone}`}
                   data-testid={`services-call-btn-${index}`}
-                  className="w-full bg-[#38BDF8] hover:bg-[#38BDF8]/90 text-[#0B1929] py-4 rounded-xl font-bold text-center transition-all flex items-center justify-center gap-3"
+                  className="w-full bg-white/10 backdrop-blur-md border border-[#B0BEC5]/40 text-white hover:bg-white/20 py-4 rounded-xl font-bold text-center transition-all flex items-center justify-center gap-3"
                 >
                   <Phone className="w-5 h-5" />
                   {card.cta}
@@ -77,9 +77,9 @@ export default function ServiciosPage() {
               {t.servicesPage.maintenance.text}
             </p>
             <div className="flex flex-wrap gap-3">
-              <div className="bg-[#38BDF8]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#38BDF8]/20 text-[#38BDF8]">European Imports</div>
-              <div className="bg-[#38BDF8]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#38BDF8]/20 text-[#38BDF8]">American Classics</div>
-              <div className="bg-[#38BDF8]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#38BDF8]/20 text-[#38BDF8]">Domestic & Foreign</div>
+              <div className="bg-[#B0BEC5]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#B0BEC5]/20 text-[#B0BEC5]">European Imports</div>
+              <div className="bg-[#B0BEC5]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#B0BEC5]/20 text-[#B0BEC5]">American Classics</div>
+              <div className="bg-[#B0BEC5]/10 px-4 py-2 rounded-full text-sm font-bold border border-[#B0BEC5]/20 text-[#B0BEC5]">Domestic & Foreign</div>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="mb-6 md:mb-0">
           <Image src={siteConfig.logo} alt={siteConfig.name} width={80} height={32} className="h-8 w-auto object-contain mb-1" />
           <div className="text-slate-600 text-xs">{siteConfig.address} {siteConfig.city}</div>
-          <a href={`mailto:${siteConfig.email}`} className="text-slate-600 text-xs hover:text-[#38BDF8] transition-colors">{siteConfig.email}</a>
+          <a href={`mailto:${siteConfig.email}`} className="text-slate-600 text-xs hover:text-[#B0BEC5] transition-colors">{siteConfig.email}</a>
           <div className="text-[10px] text-slate-700 uppercase tracking-widest mt-2">
             &copy; {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}
           </div>
@@ -22,8 +22,8 @@ export default function Footer() {
         
         <div className="flex flex-col md:flex-row gap-6 items-center">
           <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest">
-            <a className="text-slate-600 hover:text-[#38BDF8] transition-colors" href="#" data-testid="footer-privacy">{t.footer.privacy}</a>
-            <a className="text-slate-600 hover:text-[#38BDF8] transition-colors" href="#" data-testid="footer-terms">{t.footer.terms}</a>
+            <a className="text-slate-600 hover:text-[#B0BEC5] transition-colors" href="#" data-testid="footer-privacy">{t.footer.privacy}</a>
+            <a className="text-slate-600 hover:text-[#B0BEC5] transition-colors" href="#" data-testid="footer-terms">{t.footer.terms}</a>
           </div>
         </div>
       </div>

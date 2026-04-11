@@ -25,10 +25,10 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-[#0F2640] p-8 rounded-xl border border-[#1A3652] relative group hover:border-[#38BDF8]/20 transition-all"
+            className="bg-[#0F2640] p-8 rounded-xl border border-[#1A3652] relative group hover:border-[#B0BEC5]/20 transition-all"
             data-testid={`testimonial-card-${index}`}
           >
-            <Quote className="w-10 h-10 text-[#38BDF8]/10 absolute top-4 left-4 group-hover:text-[#38BDF8]/20 transition-colors" />
+            <Quote className="w-10 h-10 text-[#B0BEC5]/10 absolute top-4 left-4 group-hover:text-[#B0BEC5]/20 transition-colors" />
             
             <div className="flex text-amber-400 mb-4 relative z-10">
               {[...Array(5)].map((_, i) => (
@@ -42,7 +42,7 @@ export default function Testimonials() {
             
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#1A3652] flex items-center justify-center">
-                <span className="text-sm font-bold text-[#38BDF8]">{testimonial.author.charAt(0)}</span>
+                <span className="text-sm font-bold text-[#B0BEC5]">{testimonial.author.charAt(0)}</span>
               </div>
               <div>
                 <div className="font-bold text-sm not-italic text-white">{testimonial.author}</div>
@@ -58,10 +58,10 @@ export default function Testimonials() {
           whileHover={{ scale: 1.03 }}
           href="#" 
           data-testid="google-reviews-link"
-          className="flex items-center gap-3 px-6 py-3 bg-[#0F2640] border border-[#1A3652] rounded-xl hover:border-[#38BDF8]/30 transition-all group"
+          className="flex items-center gap-3 px-6 py-3 bg-[#0F2640] border border-[#1A3652] rounded-xl hover:border-[#B0BEC5]/30 transition-all group"
         >
-          <div className="w-8 h-8 bg-[#38BDF8]/10 rounded-lg flex items-center justify-center">
-            <span className="text-[#38BDF8] font-bold text-lg">G</span>
+          <div className="w-8 h-8 bg-[#B0BEC5]/10 rounded-lg flex items-center justify-center">
+            <span className="text-[#B0BEC5] font-bold text-lg">G</span>
           </div>
           <div className="text-left">
             <div className="text-xs text-slate-500 uppercase font-bold tracking-widest">{t.testimonials.viewMore}</div>
@@ -76,7 +76,7 @@ export default function Testimonials() {
           whileHover={{ scale: 1.03 }}
           href="#" 
           data-testid="yelp-reviews-link"
-          className="flex items-center gap-3 px-6 py-3 bg-[#0F2640] border border-[#1A3652] rounded-xl hover:border-[#38BDF8]/30 transition-all group"
+          className="flex items-center gap-3 px-6 py-3 bg-[#0F2640] border border-[#1A3652] rounded-xl hover:border-[#B0BEC5]/30 transition-all group"
         >
           <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center">
             <span className="text-red-400 font-bold text-lg">Y</span>

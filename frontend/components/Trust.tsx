@@ -44,10 +44,10 @@ export default function Trust() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.08 }}
                   viewport={{ once: true }}
-                  className="bg-[#0B1929] p-6 rounded-xl border border-[#1A3652] flex flex-col items-center text-center hover:border-[#38BDF8]/30 hover:shadow-md hover:shadow-[#38BDF8]/5 transition-all"
+                  className="bg-[#0B1929] p-6 rounded-xl border border-[#1A3652] flex flex-col items-center text-center hover:border-[#B0BEC5]/30 hover:shadow-md hover:shadow-[#B0BEC5]/5 transition-all"
                   data-testid={`trust-benefit-${index}`}
                 >
-                  <Icon className="w-8 h-8 text-[#38BDF8] mb-3" />
+                  <Icon className="w-8 h-8 text-[#B0BEC5] mb-3" />
                   <h4 className="font-bold mb-1 text-sm font-outfit text-white">{benefit.title}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{benefit.description}</p>
                 </motion.div>

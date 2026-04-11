@@ -61,7 +61,7 @@ export default function ContactForm() {
               <motion.button
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#38BDF8] text-[#0B1929] px-10 py-5 rounded-xl font-bold text-lg shadow-lg shadow-[#38BDF8]/20 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
+                className="bg-white/10 backdrop-blur-md border border-[#B0BEC5]/40 text-white px-10 py-5 rounded-xl font-bold text-lg shadow-lg shadow-white/5 hover:bg-white/20 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
               >
                 <Phone className="w-6 h-6" />
                 {t.contact.callCta}
@@ -109,7 +109,7 @@ export default function ContactForm() {
                     <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.name}</label>
                     <input 
                       name="name" required data-testid="contact-name-input"
-                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#B0BEC5] outline-none transition-all text-sm" 
                       placeholder={t.contact.form.namePlaceholder} type="text"
                     />
                   </div>
@@ -117,7 +117,7 @@ export default function ContactForm() {
                     <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.phone}</label>
                     <input 
                       name="phone" required data-testid="contact-phone-input"
-                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#B0BEC5] outline-none transition-all text-sm" 
                       placeholder={t.contact.form.phonePlaceholder} type="tel"
                     />
                   </div>
@@ -127,7 +127,7 @@ export default function ContactForm() {
                     <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.email}</label>
                     <input 
                       name="email" data-testid="contact-email-input"
-                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#B0BEC5] outline-none transition-all text-sm" 
                       placeholder={t.contact.form.emailPlaceholder} type="email"
                     />
                   </div>
@@ -135,7 +135,7 @@ export default function ContactForm() {
                     <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.vehicle}</label>
                     <input 
                       name="vehicle" data-testid="contact-vehicle-input"
-                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                      className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#B0BEC5] outline-none transition-all text-sm" 
                       placeholder={t.contact.form.vehiclePlaceholder} type="text"
                     />
                   </div>
@@ -144,7 +144,7 @@ export default function ContactForm() {
                   <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.serviceType}</label>
                   <select 
                     name="serviceType" data-testid="contact-service-select" defaultValue=""
-                    className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm appearance-none"
+                    className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#B0BEC5] outline-none transition-all text-sm appearance-none"
                   >
                     <option value="" disabled>{language === 'es' ? 'Seleccione un servicio' : 'Select a service'}</option>
                     {t.contact.form.services.map((service) => (
@@ -156,7 +156,7 @@ export default function ContactForm() {
                   <label className="block text-xs font-bold mb-2 text-slate-500 uppercase tracking-wider">{t.contact.form.problem}</label>
                   <textarea 
                     name="message" data-testid="contact-message-textarea"
-                    className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#38BDF8] outline-none transition-all text-sm" 
+                    className="w-full bg-[#0B1929] border border-[#1A3652] rounded-lg p-3 text-white focus:border-[#B0BEC5] outline-none transition-all text-sm" 
                     placeholder={t.contact.form.problemPlaceholder} rows={3}
                   ></textarea>
                 </div>
@@ -164,7 +164,7 @@ export default function ContactForm() {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting} data-testid="contact-submit-btn"
-                  className="w-full bg-[#38BDF8] text-[#0B1929] py-4 rounded-lg font-bold text-sm hover:bg-[#38BDF8]/90 transition-all uppercase tracking-widest flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full bg-white/10 backdrop-blur-md border border-[#B0BEC5]/40 text-white py-4 rounded-lg font-bold text-sm hover:bg-white/20 transition-all uppercase tracking-widest flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {isSubmitting ? (language === 'es' ? 'Enviando...' : 'Sending...') : (
                     <><Send className="w-4 h-4" />{t.contact.form.cta}</>
@@ -183,21 +183,21 @@ export default function ContactForm() {
           >
             <div className="bg-[#0B1929] p-8 rounded-xl border border-[#1A3652]">
               <h3 className="text-lg font-bold mb-6 flex items-center gap-2 font-outfit text-white">
-                <MapPin className="w-5 h-5 text-[#38BDF8]" />
+                <MapPin className="w-5 h-5 text-[#B0BEC5]" />
                 {language === 'es' ? 'Visita Nuestro Taller' : 'Visit Our Shop'}
               </h3>
               <p className="text-slate-400 mb-2 text-sm">{siteConfig.address}</p>
               <p className="text-slate-400 mb-4 text-sm">{siteConfig.city}</p>
-              <a href={`tel:${siteConfig.phone}`} className="text-[#38BDF8] font-bold text-lg block mb-2" data-testid="info-phone-link">
+              <a href={`tel:${siteConfig.phone}`} className="text-[#B0BEC5] font-bold text-lg block mb-2" data-testid="info-phone-link">
                 {siteConfig.phoneFormatted}
               </a>
-              <a href={`mailto:${siteConfig.email}`} className="text-slate-400 text-sm flex items-center gap-2 mb-6 hover:text-[#38BDF8] transition-colors" data-testid="info-email-link">
+              <a href={`mailto:${siteConfig.email}`} className="text-slate-400 text-sm flex items-center gap-2 mb-6 hover:text-[#B0BEC5] transition-colors" data-testid="info-email-link">
                 <Mail className="w-4 h-4" /> {siteConfig.email}
               </a>
               <a 
                 href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer"
                 data-testid="directions-link"
-                className="inline-block text-sm text-slate-500 hover:text-[#38BDF8] underline underline-offset-4 transition-colors"
+                className="inline-block text-sm text-slate-500 hover:text-[#B0BEC5] underline underline-offset-4 transition-colors"
               >
                 {language === 'es' ? 'Obtener Direcciones' : 'Get Directions'} &rarr;
               </a>
@@ -205,7 +205,7 @@ export default function ContactForm() {
 
             <div className="bg-[#0B1929] p-8 rounded-xl border border-[#1A3652]">
               <h3 className="text-lg font-bold mb-6 flex items-center gap-2 font-outfit text-white">
-                <Clock className="w-5 h-5 text-[#38BDF8]" />
+                <Clock className="w-5 h-5 text-[#B0BEC5]" />
                 {t.contact.info.hours}
               </h3>
               <div className="space-y-3">
@@ -219,7 +219,7 @@ export default function ContactForm() {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-slate-500">{language === 'es' ? 'Domingo' : 'Sunday'}</span>
-                  <span className="text-[#38BDF8] font-medium">{language === 'es' ? 'Cerrado' : 'Closed'}</span>
+                  <span className="text-[#B0BEC5] font-medium">{language === 'es' ? 'Cerrado' : 'Closed'}</span>
                 </div>
               </div>
             </div>

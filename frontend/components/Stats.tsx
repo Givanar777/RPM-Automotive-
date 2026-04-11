@@ -29,8 +29,8 @@ export default function Stats() {
               className="flex flex-col lg:flex-row items-center gap-4"
               data-testid={`stat-item-${index}`}
             >
-              <div className="w-12 h-12 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/20 flex items-center justify-center">
-                <stat.icon className="w-6 h-6 text-[#38BDF8]" />
+              <div className="w-12 h-12 rounded-full bg-[#B0BEC5]/10 border border-[#B0BEC5]/20 flex items-center justify-center">
+                <stat.icon className="w-6 h-6 text-[#B0BEC5]" />
               </div>
               <div>
                 <div className="text-2xl font-black text-white font-outfit tracking-tight">{stat.title}</div>

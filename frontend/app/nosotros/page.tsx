@@ -19,7 +19,7 @@ export default function Nosotros() {
       <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
-            <span className="inline-block text-[#38BDF8] font-bold uppercase tracking-[0.2em] text-xs mb-4">
+            <span className="inline-block text-[#B0BEC5] font-bold uppercase tracking-[0.2em] text-xs mb-4">
               {t.about.hero.badge}
             </span>
             <h1 className="text-4xl md:text-6xl font-black font-outfit text-white leading-[1.05] tracking-tighter mb-6">
@@ -37,7 +37,7 @@ export default function Nosotros() {
               <h2 className="text-3xl font-black text-white font-outfit tracking-tight mb-4">{t.about.legacy.title}</h2>
               <p>{t.about.legacy.p1}</p>
               <p>{t.about.legacy.p2}</p>
-              <div className="bg-[#38BDF8]/5 border-l-4 border-[#38BDF8] p-6 italic text-slate-300">
+              <div className="bg-[#B0BEC5]/5 border-l-4 border-[#B0BEC5] p-6 italic text-slate-300">
                 &quot;{t.about.legacy.quote}&quot;
               </div>
               <p>{t.about.legacy.p3}</p>
@@ -68,10 +68,10 @@ export default function Nosotros() {
               { icon: BadgeDollarSign, title: t.about.values.items[2].title, desc: t.about.values.items[2].desc },
             ].map((value, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }} data-testid={`about-value-${i}`}
-                className="bg-[#0F2640] p-10 rounded-xl border border-[#1A3652] hover:border-[#38BDF8]/30 transition-all text-center group"
+                className="bg-[#0F2640] p-10 rounded-xl border border-[#1A3652] hover:border-[#B0BEC5]/30 transition-all text-center group"
               >
-                <div className="w-14 h-14 bg-[#38BDF8]/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#38BDF8]/20 transition-colors">
-                  <value.icon className="w-7 h-7 text-[#38BDF8]" />
+                <div className="w-14 h-14 bg-[#B0BEC5]/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#B0BEC5]/20 transition-colors">
+                  <value.icon className="w-7 h-7 text-[#B0BEC5]" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-3 font-outfit">{value.title}</h3>
                 <p className="text-slate-500 leading-relaxed text-sm">{value.desc}</p>
@@ -90,7 +90,7 @@ export default function Nosotros() {
             <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto relative z-10">{t.about.cta.subtitle}</p>
             <a href={`tel:${siteConfig.phone}`} className="inline-block relative z-10" data-testid="about-cta-call">
               <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }}
-                className="bg-[#38BDF8] text-[#0B1929] px-10 py-5 rounded-xl font-bold text-xl shadow-lg shadow-[#38BDF8]/20 hover:bg-[#38BDF8]/90 transition-all flex items-center gap-3"
+                className="bg-white/10 backdrop-blur-md border border-[#B0BEC5]/40 text-white px-10 py-5 rounded-xl font-bold text-xl shadow-lg shadow-[#B0BEC5]/20 hover:bg-[#B0BEC5]/90 transition-all flex items-center gap-3"
               >
                 <Phone className="w-6 h-6" />
                 {t.about.cta.button}
