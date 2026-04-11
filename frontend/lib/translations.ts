@@ -237,7 +237,7 @@ export const translations = {
     },
     hero: {
       badge: 'Cuidado Automotriz Experto',
-      title: 'Reparacion y Diagnostico Automotriz Confiable en ',
+      title: 'Reparacion y Diagnostico Automotriz en ',
       location: 'Santa Cruz, CA',
       subtitle: 'Servicio experto en el que puede confiar. Mecanicos experimentados, diagnosticos el mismo dia y garantia de 12 meses en piezas y mano de obra.',
       ctaCall: 'Llamar Ahora',
