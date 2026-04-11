@@ -89,7 +89,7 @@ function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => 
   return (
     <aside data-testid="admin-sidebar" className={`fixed top-0 left-0 h-screen bg-zinc-950 border-r border-zinc-800 z-40 transition-all ${collapsed ? 'w-0 -translate-x-full md:w-16 md:translate-x-0' : 'w-64'}`}>
       <div className="flex items-center justify-between h-14 px-4 border-b border-zinc-800">
-        {!collapsed && <span className="text-white font-black font-outfit text-sm">RPM Admin</span>}
+        {!collapsed && <span className="text-white font-black font-outfit text-sm flex items-center gap-2"><img src="/logo.webp" alt="RPM" className="h-6 w-auto" /> Admin</span>}
         <button onClick={onToggle} className="text-zinc-400 hover:text-white p-1" data-testid="sidebar-toggle">
           {collapsed ? <ChevronRight className="w-4 h-4" /> : <X className="w-4 h-4" />}
         </button>

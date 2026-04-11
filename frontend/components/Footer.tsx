@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Share2 } from 'lucide-react';
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { siteConfig } from '@/lib/siteConfig';
 
@@ -12,7 +12,7 @@ export default function Footer() {
     <footer data-testid="footer" className="bg-zinc-950 border-t border-zinc-800">
       <div className="flex flex-col md:flex-row justify-between items-center py-10 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="mb-6 md:mb-0">
-          <div className="text-lg font-black text-white font-outfit tracking-tight mb-1">{siteConfig.name}</div>
+          <Image src={siteConfig.logo} alt={siteConfig.name} width={80} height={32} className="h-8 w-auto object-contain mb-1" />
           <div className="text-zinc-600 text-xs">{siteConfig.address} {siteConfig.city}</div>
           <div className="text-[10px] text-zinc-700 uppercase tracking-widest mt-2">
             &copy; {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}

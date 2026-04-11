@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Phone, Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -22,10 +23,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav data-testid="main-navbar" className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200/60">
+      <nav data-testid="main-navbar" className="fixed top-0 w-full z-50 bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-800/60">
         <div className="flex justify-between items-center h-16 px-6 md:px-12 max-w-7xl mx-auto">
-          <Link href="/" data-testid="logo-link" className="text-xl font-black tracking-tighter text-zinc-900 font-outfit">
-            {siteConfig.name}
+          <Link href="/" data-testid="logo-link" className="flex items-center">
+            <Image src={siteConfig.logo} alt={siteConfig.name} width={120} height={48} className="h-11 w-auto object-contain" priority />
           </Link>
           
           <div className="hidden md:flex gap-8 font-medium text-sm">
@@ -37,7 +38,7 @@ export default function Navbar() {
                 className={`${
                   pathname === link.href 
                     ? 'text-[#0070ea] border-b-2 border-[#0070ea]' 
-                    : 'text-zinc-600 hover:text-zinc-900'
+                    : 'text-zinc-300 hover:text-white'
                 } transition-colors py-1`}
               >
                 {link.name}
@@ -47,12 +48,12 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center gap-1.5 mr-1">
-              <Globe className="w-3.5 h-3.5 text-zinc-400" />
+              <Globe className="w-3.5 h-3.5 text-zinc-500" />
               <select 
                 data-testid="language-selector"
                 value={language} 
                 onChange={(e) => setLanguage(e.target.value as 'en' | 'es')}
-                className="text-xs font-bold text-zinc-600 bg-transparent border-none focus:ring-0 cursor-pointer uppercase"
+                className="text-xs font-bold text-zinc-300 bg-transparent border-none focus:ring-0 cursor-pointer uppercase"
               >
                 <option value="en">EN</option>
                 <option value="es">ES</option>
@@ -61,7 +62,7 @@ export default function Navbar() {
             
             <a 
               data-testid="nav-phone-link"
-              className="hidden lg:flex items-center gap-2 text-zinc-700 font-bold text-sm" 
+              className="hidden lg:flex items-center gap-2 text-zinc-300 font-bold text-sm" 
               href={`tel:${siteConfig.phone}`}
             >
               <Phone className="w-4 h-4" />
@@ -83,7 +84,7 @@ export default function Navbar() {
             <button 
               data-testid="mobile-menu-toggle"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-zinc-700 hover:text-zinc-900 transition-colors"
+              className="md:hidden p-2 text-zinc-300 hover:text-white transition-colors"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -100,7 +101,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             data-testid="mobile-menu"
-            className="fixed top-16 inset-x-0 z-40 bg-white border-b border-zinc-200 shadow-lg md:hidden"
+            className="fixed top-16 inset-x-0 z-40 bg-zinc-950 border-b border-zinc-800 shadow-lg md:hidden"
           >
             <div className="px-6 py-6 space-y-1">
               {navLinks.map((link) => (
@@ -111,8 +112,8 @@ export default function Navbar() {
                   data-testid={`mobile-nav-${link.href.replace('/', '').replace('#', '')}`}
                   className={`block py-3 px-4 rounded-lg text-base font-medium transition-colors ${
                     pathname === link.href
-                      ? 'bg-blue-50 text-[#0070ea]'
-                      : 'text-zinc-700 hover:bg-zinc-50'
+                      ? 'bg-[#0070ea]/10 text-[#0070ea]'
+                      : 'text-zinc-300 hover:bg-zinc-900'
                   }`}
                 >
                   {link.name}
@@ -121,11 +122,11 @@ export default function Navbar() {
 
               <div className="pt-4 border-t border-zinc-100 mt-4 space-y-3">
                 <div className="flex items-center gap-2 px-4">
-                  <Globe className="w-4 h-4 text-zinc-400" />
+                  <Globe className="w-4 h-4 text-zinc-500" />
                   <select 
                     value={language} 
                     onChange={(e) => setLanguage(e.target.value as 'en' | 'es')}
-                    className="text-sm font-bold text-zinc-600 bg-transparent border-none cursor-pointer uppercase"
+                    className="text-sm font-bold text-zinc-300 bg-transparent border-none cursor-pointer uppercase"
                   >
                     <option value="en">English</option>
                     <option value="es">Espanol</option>
