@@ -24,9 +24,9 @@ export default function Navbar() {
   return (
     <>
       <nav data-testid="main-navbar" className="fixed top-0 w-full z-50 bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-800/60">
-        <div className="flex justify-between items-center h-16 px-6 md:px-12 max-w-7xl mx-auto">
+        <div className="flex justify-between items-center h-14 px-6 md:px-12 max-w-7xl mx-auto">
           <Link href="/" data-testid="logo-link" className="flex items-center">
-            <Image src={siteConfig.logo} alt={siteConfig.name} width={120} height={48} className="h-11 w-auto object-contain" priority />
+            <Image src={siteConfig.logo} alt={siteConfig.name} width={90} height={28} className="h-7 w-auto object-contain" priority />
           </Link>
           
           <div className="hidden md:flex gap-8 font-medium text-sm">
@@ -90,7 +90,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             data-testid="mobile-menu"
-            className="fixed top-16 inset-x-0 z-40 bg-zinc-950 border-b border-zinc-800 shadow-lg md:hidden"
+            className="fixed top-14 inset-x-0 z-40 bg-zinc-950 border-b border-zinc-800 shadow-lg md:hidden"
           >
             <div className="px-6 py-6 space-y-1">
               {navLinks.map((link) => (

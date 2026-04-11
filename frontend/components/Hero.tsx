@@ -11,7 +11,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section data-testid="hero-section" className="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden">
+    <section data-testid="hero-section" className="relative h-[90vh] min-h-[650px] flex items-center overflow-hidden pt-14">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1929]/90 via-[#0B1929]/70 to-[#0B1929]/50 z-10"></div>
         <Image 
