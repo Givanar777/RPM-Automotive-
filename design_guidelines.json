@@ -1,0 +1,159 @@
+{
+  "theme_and_archetype": {
+    "domain": "Automotive Repair Services",
+    "theme": "hybrid_light_dark",
+    "archetype": "Archetype 4: Swiss & High-Contrast",
+    "vibe": "Objective, rigid, functional, highly trustworthy. A premium industrial feel—like a pristine Porsche service center rather than a gritty local shop.",
+    "reasoning": "The user requested keeping the current theme (Blue #0070ea and white/light theme with dark sections) while making it more premium. Archetype 4 allows us to use high-contrast stark whites and deep obsidians with the brand blue to create a sense of technical authority and absolute trust."
+  },
+  "color_palette": {
+    "primary": {
+      "hex": "#0070EA",
+      "name": "RPM Blue",
+      "usage": "CTAs, critical brand accents, high-priority interactive elements."
+    },
+    "base_light": {
+      "background": "#FFFFFF",
+      "surface": "#F4F4F5",
+      "text": "#0A0A0A"
+    },
+    "base_dark": {
+      "background": "#0A0A0A",
+      "surface": "#18181B",
+      "text": "#FFFFFF"
+    },
+    "accents": {
+      "warning_amber": "#F59E0B",
+      "border_light": "rgba(10, 10, 10, 0.1)",
+      "border_dark": "rgba(255, 255, 255, 0.15)"
+    },
+    "rules": [
+      "Use 'The Tinted Grey' rule: never pure #808080, always slate or zinc.",
+      "No full-screen muddy gradients. Use solid colors with sharp 1px borders.",
+      "Hero image overlay max opacity: bg-black/40."
+    ]
+  },
+  "typography": {
+    "banned_fonts": ["Inter", "Arimo", "Public Sans"],
+    "heading_font": {
+      "family": "Cabinet Grotesk",
+      "fallback": "sans-serif",
+      "weight": "font-black",
+      "style": "tracking-tighter",
+      "usage": "All H1, H2, and major callouts. Never use generic sans."
+    },
+    "body_font": {
+      "family": "Satoshi",
+      "fallback": "sans-serif",
+      "weight": "font-medium",
+      "usage": "Body text, paragraphs, smaller UI elements."
+    },
+    "hierarchy": {
+      "h1": "text-5xl md:text-6xl+ tracking-tighter leading-[1.05]",
+      "h2": "text-3xl md:text-4xl tracking-tight",
+      "h3": "text-xl md:text-2xl",
+      "body": "text-base md:text-lg leading-relaxed",
+      "overline": "text-xs font-bold tracking-[0.2em] uppercase text-zinc-500"
+    }
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "p-4, p-8, p-12, p-16, p-24, p-32",
+    "grids": {
+      "marketing_services": {
+        "mode": "MODE A: THE 'TETRIS' GRID",
+        "structure": "grid-cols-1 md:grid-cols-12 gap-8",
+        "description": "Bento-style layout for services. Mix 3+ shapes (The Hero col-span-8 row-span-2, The Square col-span-4, The Filler col-span-4)."
+      },
+      "dashboard_lead_management": {
+        "mode": "MODE B: THE 'CONTROL ROOM' GRID",
+        "structure": "grid-cols-1 lg:grid-cols-4 gap-6",
+        "description": "Dense, highly scannable layout for the lead management admin view. 1px borders, no soft shadows."
+      }
+    },
+    "rules": [
+      "Generous Spacing: Use 2-3x more spacing than typical. p-8 or p-12 in containers.",
+      "Containers with borders MUST have internal padding to prevent collision.",
+      "Mobile-First: Always start with grid-cols-1."
+    ]
+  },
+  "components_and_surfaces": {
+    "marketing_pages": {
+      "html_tailwind_only": true,
+      "style": "Grid Borders (The Technical Look). 1px solid borders, no shadows.",
+      "hero": "Massive typography, bg-black/40 overlay on image. Never center everything—use aggressive asymmetry."
+    },
+    "lead_management_dashboard": {
+      "library": "shadcn/ui",
+      "style": "Neumorphism (Tactile) mixed with Grid Borders. Flat background, 1px subtle border, sharp inner contrasts.",
+      "tables": "Dense, crisp lines. Use hover:bg-zinc-100/10 for rows."
+    },
+    "buttons": {
+      "primary": "bg-[#0070EA] text-white font-bold hover:bg-blue-600 hover:-translate-y-0.5 transition-transform",
+      "outline": "border-2 border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white"
+    },
+    "navigation": {
+      "style": "Crystal Glassmorphism (backdrop-blur-xl bg-white/70) or solid white with a hard bottom border.",
+      "requirements": ["Visible on desktop (no hamburger)", "Include EN/ES language toggle", "Primary CTA: Call/Text Number"]
+    }
+  },
+  "motion_and_interaction": {
+    "scrolling": "Lenis for smooth scrolling (MANDATORY for premium feel).",
+    "microinteractions": "Hover states must explicitly set text color (e.g., hover:bg-zinc-900 hover:text-white). Focus states must have higher contrast.",
+    "animations": "Framer Motion for entrance staggers on the Bento grid. Very subtle, no bouncing."
+  },
+  "content_directives": {
+    "critical_updates": [
+      "REMOVE all mentions of 'ASE certification'.",
+      "CHANGE '24 months warranty' to '12 month warranty'.",
+      "CHANGE 'Free Diagnostic' to 'Get a diagnostic in 30 min'.",
+      "COMMUNICATION: All CTAs must drive to Text or Call. NO booking system or calendar.",
+      "PHONE: 831-429-2096 (Format as (831) 429-2096).",
+      "ADDRESS: 110 Stanford Ave. Santa Cruz, CA 95062."
+    ],
+    "new_features": [
+      "Bilingual EN/ES support toggle in Header.",
+      "Lead Management Admin Dashboard (for saved contacts when contacted via form/text).",
+      "Image/Logo Management Admin View (easy UI for updating hero/logos)."
+    ]
+  },
+  "assets_and_media": {
+    "icons": {
+      "library": "@phosphor-icons/react",
+      "style": "Duotone weight for marketing, Regular for dashboard."
+    },
+    "images": [
+      {
+        "slot": "hero_background",
+        "url": "https://images.unsplash.com/photo-1740379140859-813998e7ed29?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwxfHxjbGVhbiUyMGF1dG8lMjByZXBhaXIlMjBzaG9wfGVufDB8fHx8MTc3NTg4MDA0OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Clean, modern garage setting. Use with bg-black/40 overlay."
+      },
+      {
+        "slot": "service_bento_1",
+        "url": "https://images.unsplash.com/photo-1711386689622-1cda23e10217?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwxfHxtZWNoYW5pYyUyMHJlcGFpcmluZyUyMGNhcnxlbnwwfHx8fDE3NzU4ODAwNDl8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Mechanic working on engine in a well-lit bay."
+      },
+      {
+        "slot": "service_bento_2",
+        "url": "https://images.pexels.com/photos/5276374/pexels-photo-5276374.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Mechanic adjusting parts under a lifted car, showing suspension/brakes."
+      }
+    ],
+    "rules": [
+      "NEVER use placeholder URLs.",
+      "Add data-testid attributes to all interactive elements."
+    ]
+  },
+  "instructions_to_main_agent": {
+    "setup": "Install @phosphor-icons/react, framer-motion, and lenis. Apply layout for .js and tailwind usage without overcomplicating TSX elements since codebase might have pure .js files.",
+    "execution_order": [
+      "1. Update global CSS and Tailwind config with new fonts (Cabinet Grotesk, Satoshi) and colors.",
+      "2. Strip out all booking system components; replace with Call/Text CTAs.",
+      "3. Implement the bilingual EN/ES context or i18n structure.",
+      "4. Refactor Marketing Page (Hero, Trust, Services Bento Grid) applying strictly the HTML/Tailwind styling with generous spacing.",
+      "5. Build Lead Management Dashboard using shadcn/ui components (dense Control Room grid).",
+      "6. Build the Image/Logo Management Admin tab.",
+      "7. Verify all text changes (12mo warranty, 30 min diagnostic, 110 Stanford Ave, no ASE)."
+    ],
+    "testing": "Ensure every CTA button and form input has a data-testid. Verify responsiveness (images max-h-[80vh] on mobile)."
+  }
+}
