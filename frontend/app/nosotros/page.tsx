@@ -10,23 +10,34 @@ import { useLanguage } from '@/context/LanguageContext';
 import { siteConfig } from '@/lib/siteConfig';
 
 export default function Nosotros() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <main className="min-h-screen bg-[#0B1929]">
       <Navbar />
       
-      {/* Hero */}
-      <section className="pt-48 pb-32 border-b border-white/5">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+      {/* Video Hero */}
+      <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1929] via-black/30 to-black/20 z-10" />
+          <video
+            autoPlay muted loop playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
+            key={language}
+          >
+            <source src={language === 'es' ? '/hero-nosotros.mp4' : '/hero-aboutus.mp4'} type="video/mp4" />
+          </video>
+        </div>
+        <div className="relative z-20 px-8 md:px-16 max-w-[1400px] mx-auto w-full pb-16">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }} className="max-w-3xl">
-            <div className="text-[11px] uppercase tracking-[0.3em] text-white/30 font-medium mb-6">
+            <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-6">
               {t.about.hero.badge}
             </div>
             <h1 className="text-5xl md:text-[5rem] font-bold font-outfit text-white leading-[0.95] tracking-[-0.03em] mb-8">
               {t.about.hero.title}
             </h1>
-            <p className="text-lg text-white/35 leading-relaxed">{t.about.hero.subtitle}</p>
+            <p className="text-base md:text-lg text-white/40 leading-relaxed">{t.about.hero.subtitle}</p>
           </motion.div>
         </div>
       </section>
