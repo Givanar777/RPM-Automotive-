@@ -7,6 +7,10 @@
 
 ## Auth Endpoints
 - POST /api/auth/login
-- POST /api/auth/register
+- POST /api/auth/register (admin only)
 - GET /api/auth/me
 - POST /api/auth/logout
+- POST /api/auth/refresh
+
+## Admin Dashboard URL
+- /admin (login required)
