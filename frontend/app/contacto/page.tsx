@@ -7,13 +7,11 @@ import Footer from '@/components/Footer';
 
 export default function ContactoPage() {
   return (
-    <main className="min-h-screen bg-slate-900">
+    <main className="min-h-screen bg-zinc-950">
       <Navbar />
-      
       <div className="pt-24">
         <ContactForm />
       </div>
-      
       <Footer />
     </main>
   );
