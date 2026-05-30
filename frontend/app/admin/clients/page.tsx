@@ -379,7 +379,7 @@ function ClientsContent() {
                               <button onClick={() => startEdit(rec)} className="text-zinc-600 hover:text-zinc-300 transition-colors p-1.5" data-testid={`edit-record-${rec.id}`}>
                                 <Edit2 className="w-3.5 h-3.5" />
                               </button>
-                              <button onClick={() => deleteRecord(rec.id)} className="text-zinc-600 hover:text-red-400 transition-colors p-1.5" data-testid={`delete-record-${rec.id}`}>
+                              <button onClick={() => deleteRecord(rec.id)} className="text-zinc-600 hover:text-zinc-300 transition-colors p-1.5" data-testid={`delete-record-${rec.id}`}>
                                 <Trash2 className="w-3.5 h-3.5" />
                               </button>
                             </div>

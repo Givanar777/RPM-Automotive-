@@ -89,9 +89,9 @@ export default function ResetPasswordPage() {
       <div className="w-full max-w-sm">
         {tokenError ? (
           <div data-testid="token-error">
-            <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-6 text-center mb-6">
-              <AlertCircle className="w-8 h-8 text-red-400 mx-auto mb-3" />
-              <p className="text-red-400 text-sm font-medium mb-1">Invalid Link</p>
+            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6 text-center mb-6">
+              <AlertCircle className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+              <p className="text-blue-400 text-sm font-medium mb-1">Invalid Link</p>
               <p className="text-zinc-400 text-xs">{tokenError}</p>
             </div>
             <div className="flex flex-col gap-3 items-center">
@@ -124,7 +124,7 @@ export default function ResetPasswordPage() {
             </div>
             <form onSubmit={handleSubmit} className="space-y-4" data-testid="reset-password-form">
               {error && (
-                <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm p-3 rounded-lg" data-testid="reset-error">
+                <div className="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm p-3 rounded-lg" data-testid="reset-error">
                   {error}
                 </div>
               )}

@@ -24,7 +24,7 @@ function statusColor(s: string) {
     case 'new': return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
     case 'contacted': return 'bg-blue-500/10 text-blue-500 border-blue-500/20';
     case 'converted': return 'bg-green-500/10 text-green-500 border-green-500/20';
-    case 'lost': return 'bg-red-500/10 text-red-500 border-red-500/20';
+    case 'lost': return 'bg-zinc-500/10 text-zinc-400 border-zinc-500/20';
     default: return 'bg-zinc-500/10 text-zinc-500 border-zinc-500/20';
   }
 }
@@ -226,7 +226,7 @@ function LeadsContent() {
                 <button
                   onClick={() => deleteLead(selected.id)}
                   data-testid="delete-lead-btn"
-                  className="bg-zinc-800 text-red-400 py-2 px-3 rounded-lg text-xs hover:bg-red-500/10 transition-colors"
+                  className="bg-zinc-800 text-zinc-400 py-2 px-3 rounded-lg text-xs hover:bg-zinc-700 transition-colors"
                 >
                   <Trash2 className="w-3 h-3" />
                 </button>

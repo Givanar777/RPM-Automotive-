@@ -85,7 +85,7 @@ function TeamContent() {
       {showAdd && (
         <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 mb-6" data-testid="add-member-form">
           <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-4">New Team Member</h3>
-          {error && <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm p-3 rounded-lg mb-4">{error}</div>}
+          {error && <div className="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm p-3 rounded-lg mb-4">{error}</div>}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
             <input
               placeholder="Full Name" value={form.name}
@@ -153,7 +153,7 @@ function TeamContent() {
                   </button>
                   <button
                     onClick={() => deleteMember(member.id)}
-                    className="text-zinc-600 hover:text-red-400 transition-colors p-1"
+                    className="text-zinc-600 hover:text-zinc-300 transition-colors p-1"
                     title="Remove member"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

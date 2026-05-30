@@ -30,15 +30,32 @@ export default function Nosotros() {
           </video>
         </div>
         <div className="relative z-20 px-8 md:px-16 max-w-[1400px] mx-auto w-full pb-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }} className="max-w-3xl">
-            <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-6">
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+              className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-6"
+            >
               {t.about.hero.badge}
-            </div>
-            <h1 className="text-5xl md:text-[5rem] font-bold font-outfit text-white leading-[0.95] tracking-[-0.03em] mb-8">
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+              className="text-5xl md:text-[5rem] font-bold font-outfit text-white leading-[0.95] tracking-[-0.03em] mb-8"
+            >
               {t.about.hero.title}
-            </h1>
-            <p className="text-base md:text-lg text-white/40 leading-relaxed">{t.about.hero.subtitle}</p>
-          </motion.div>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              className="text-base md:text-lg text-white/40 leading-relaxed"
+            >
+              {t.about.hero.subtitle}
+            </motion.p>
+          </div>
         </div>
       </section>
 
@@ -88,7 +105,7 @@ export default function Nosotros() {
               { icon: History, title: t.about.values.items[1].title, desc: t.about.values.items[1].desc },
               { icon: BadgeDollarSign, title: t.about.values.items[2].title, desc: t.about.values.items[2].desc },
             ].map((value, i) => (
-              <motion.div key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }} data-testid={`about-value-${i}`}
+              <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] }} viewport={{ once: true }} data-testid={`about-value-${i}`}
                 className="bg-[#0B1929] p-10 group hover:bg-white/[0.02] transition-all duration-500"
               >
                 <value.icon className="w-5 h-5 text-white/15 mb-8 group-hover:text-white/40 transition-colors duration-500" />

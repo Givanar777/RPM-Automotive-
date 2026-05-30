@@ -16,18 +16,24 @@ export default function Services() {
 
   return (
     <section id="servicios" data-testid="services-section" className="py-32 px-8 md:px-16 max-w-[1400px] mx-auto">
-      <div className="mb-20">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+        className="mb-20"
+      >
         <div className="text-[11px] uppercase tracking-[0.3em] text-white/30 font-medium mb-4">Our Expertise</div>
         <h2 className="text-4xl md:text-5xl font-bold font-outfit tracking-tight text-white">{t.services.title}</h2>
-      </div>
-      
+      </motion.div>
+
       <div className="grid md:grid-cols-3 gap-px bg-white/5">
         {services.map((service, index) => (
-          <motion.div 
+          <motion.div
             key={index}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: index * 0.15 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
             className="bg-[#0B1929] p-10 group hover:bg-white/[0.02] transition-all duration-500"
             data-testid={`service-card-${index}`}

@@ -45,7 +45,7 @@ function LoginPage() {
           <p className="text-zinc-500 text-sm mt-1">Sign in to manage your business</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4" data-testid="admin-login-form">
-          {error && <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm p-3 rounded-lg" data-testid="login-error">{error}</div>}
+          {error && <div className="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm p-3 rounded-lg" data-testid="login-error">{error}</div>}
           <input
             data-testid="login-email"
             type="email" placeholder="Email" value={email}
@@ -123,7 +123,7 @@ function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => 
         <button
           onClick={logout}
           data-testid="sidebar-logout"
-          className="flex items-center gap-2 w-full px-3 py-2 text-sm text-zinc-400 hover:text-red-400 rounded-lg hover:bg-zinc-900 transition-colors"
+          className="flex items-center gap-2 w-full px-3 py-2 text-sm text-zinc-400 hover:text-zinc-200 rounded-lg hover:bg-zinc-900 transition-colors"
         >
           <LogOut className="w-4 h-4" />
           {!collapsed && 'Logout'}

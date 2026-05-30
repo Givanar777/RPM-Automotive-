@@ -30,15 +30,30 @@ export default function ServiciosPage() {
           </video>
         </div>
         <div className="relative z-20 px-8 md:px-16 max-w-[1400px] mx-auto w-full pb-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}>
-            <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-6">Our Expertise</div>
-            <h1 className="text-5xl md:text-[5rem] font-bold text-white font-outfit tracking-[-0.03em] leading-[0.95] mb-8 max-w-4xl">
-              {t.servicesPage.hero.title}
-            </h1>
-            <p className="text-base md:text-lg text-white/40 max-w-2xl leading-relaxed">
-              {t.servicesPage.hero.subtitle}
-            </p>
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-[11px] uppercase tracking-[0.3em] text-white/40 font-medium mb-6"
+          >
+            Our Expertise
           </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-5xl md:text-[5rem] font-bold text-white font-outfit tracking-[-0.03em] leading-[0.95] mb-8 max-w-4xl"
+          >
+            {t.servicesPage.hero.title}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-base md:text-lg text-white/40 max-w-2xl leading-relaxed"
+          >
+            {t.servicesPage.hero.subtitle}
+          </motion.p>
         </div>
       </section>
 
@@ -50,10 +65,10 @@ export default function ServiciosPage() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.1, 0.25, 1] }}
                 data-testid={`services-page-card-${index}`}
                 className="bg-[#0B1929] p-10 md:p-14 flex flex-col justify-between group hover:bg-white/[0.02] transition-all duration-500"
               >
@@ -83,7 +98,12 @@ export default function ServiciosPage() {
       <section className="py-32 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto px-8 md:px-16">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            >
               <div className="text-[11px] uppercase tracking-[0.3em] text-white/30 font-medium mb-6">Specialization</div>
               <h2 className="text-4xl md:text-5xl font-bold font-outfit tracking-tight text-white mb-8">
                 {t.servicesPage.maintenance.title}
@@ -92,14 +112,21 @@ export default function ServiciosPage() {
                 {t.servicesPage.maintenance.text}
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex flex-col gap-px bg-white/5">
-              {['European Imports', 'American Classics', 'Domestic & Foreign'].map((item) => (
-                <div key={item} className="bg-[#0B1929] px-8 py-6 flex items-center justify-between group hover:bg-white/[0.02] transition-all duration-500">
+            <div className="flex flex-col gap-px bg-white/5">
+              {['European Imports', 'American Classics', 'Domestic & Foreign'].map((item, i) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="bg-[#0B1929] px-8 py-6 flex items-center justify-between group hover:bg-white/[0.02] transition-all duration-500"
+                >
                   <span className="text-white/50 text-[15px] group-hover:text-white/70 transition-colors duration-500">{item}</span>
                   <ChevronRight className="w-4 h-4 text-white/15 group-hover:text-white/40 transition-colors duration-500" />
-                </div>
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
