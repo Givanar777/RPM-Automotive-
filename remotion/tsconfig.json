@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "ESNext"],
+    "module": "commonjs",
+    "target": "ES2022",
+    "strict": true,
+    "outDir": "./dist",
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}
